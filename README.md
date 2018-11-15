@@ -9,6 +9,9 @@
 - content
 Summary information and metrics for listings in Amsterdam
 
+## Proof of Loading Data
+
+(./img/load_data_screenshot.png)
 
 
 ## Questions:
