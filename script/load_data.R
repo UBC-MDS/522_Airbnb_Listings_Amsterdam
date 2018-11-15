@@ -1,1 +1,10 @@
-data=read_csv("data/listings.csv")
+#! /usr/bin/env Rscript 
+# load_data.R
+# Nov 15 2018
+#
+
+#
+# Usage: Rscript load_data.R
+suppressPackageStartupMessages(library(tidyverse))
+data=read.csv("data/listings.csv")
+head(data)
