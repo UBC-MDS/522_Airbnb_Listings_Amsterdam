@@ -1,0 +1,19 @@
+---
+title: "Main Report"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(here)
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = here())
+
+```
+
+
+```{r}
+data=read_csv("data/listings.csv")
+str(data)
+```
+

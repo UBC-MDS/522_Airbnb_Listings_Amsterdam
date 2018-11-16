@@ -11,7 +11,7 @@ Summary information and metrics for listings in Amsterdam
 
 ## Proof of Loading Data
 
-![](./img/load_data_screenshot.png)
+![Main report (sketch)](reports/main_report.md)
 
 
 ## Questions:
