@@ -2,9 +2,9 @@
 
 ## Data 
 
-- Source: 
-[Website](http://insideairbnb.com/get-the-data.html)  
-[File](http://data.insideairbnb.com/the-netherlands/north-holland/amsterdam/2018-10-05/visualisations/listings.csv)
+Source: 
+* [Website](http://insideairbnb.com/get-the-data.html)  
+* [File](http://data.insideairbnb.com/the-netherlands/north-holland/amsterdam/2018-10-05/visualisations/listings.csv)
 
 Summary information and metrics for AirBnb listings in Amsterdam. The data variables are:  
 * id: Unique identification code for the listing
