@@ -25,6 +25,8 @@ Summary information and metrics for AirBnb listings in Amsterdam. The data varia
 
 ## Proof of Loading Data
 
+We can use the script under src to load data.
+
 ![Main report (sketch)](https://github.com/liuyuwei169/DSCI-522_Airbnb_Listings_Amsterdam/blob/master/img/load_data_screenshot.png)
 
 
