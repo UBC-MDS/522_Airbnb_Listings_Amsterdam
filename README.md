@@ -1,14 +1,14 @@
 # AirBnb Listing Prices in Amsterdam
 
-## Team 
+## Team
 
-- Gabriel Francisco Medeiros Bogo 
-- Yuwei Liu 
-- Jielin Yu 
+- Gabriel Francisco Medeiros Bogo
+- Yuwei Liu
+- Jielin Yu
 
-## Data 
+## Data
 
-Source: 
+Source:
 * [Website](http://insideairbnb.com/get-the-data.html)  
 * [File](http://data.insideairbnb.com/the-netherlands/north-holland/amsterdam/2018-10-05/visualisations/listings.csv)
 
@@ -38,33 +38,34 @@ We can use the script under src to load data.
 
 ## Questions:
 
-- What are the strongest predictors of price for airbnb listings in Amsterdam?
+- What are the two strongest predictors of price for airbnb listings in Amsterdam?
 
 - Type of Question: **Predictive**
 
 
-## Analysis Plan 
+## Analysis Plan
 
 Our goal is to determine which of the features at hand have the highest dependence with the data.
 
-Step 1. Data wangling:
+Step 1. Data wrangling:
 
-- Cleaning missing and null values 
-- Selecting useful Columns 
-- Mutating a column indicating price three levels as high, median and low 
+- Cleaning missing and null values
+- Pre-selecting useful features
+- Identifying outliers
+- Converting the price column into a categorical variable with three levels: high, median and low
 
 Step 2. Linear Regression :
 
- A Multiple Linear Regression can provide this information by the weight of each of the features.
+ A Multiple Linear Regression can provide this information by the weight of each of the features. This will be performed in parallel to the classification algorithm below.
 
-Step 3. Decision Tree regression:
+Step 3. Decision Tree classification:
 
 - Separate the dataset into training and testing datasets
 - Feature vectors are `minimum_nights`, `number_of_reviews`, `calculated_host_listings`, `availability_365`
-- Target variable is the price level 
-- Use `scikit-learn` to build a predictive model 
+- Target variable is the categorical price level
+- Use `scikit-learn` to build a predictive model
 
 
 ## Summarization and Visualization
 
-First, we will make multiple scatterplots to show different feature relationships with prices. Then, we will draw a decision tree and report a ordered list of four predictors. Also, we will report a classification error of our model. 
+First, we will make multiple scatterplots to show the relationships of different features with the prices. Then, we will draw a decision tree and report an ordered list of four predictors. Also, we will report a classification error of our model.
