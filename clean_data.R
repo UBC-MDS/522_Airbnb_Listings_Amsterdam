@@ -19,4 +19,4 @@ sum(is.na(data))
 xs=quantile(data$price,c(0,1/3,2/3,1))
 xs
 # classify the price into three groups 
-data %>% mutate(price_level=cut(price,breaks=xs,labels=c("low","median","low")))
+data=data %>% mutate(price_level=cut(price,breaks=xs,labels=c("low","median","low")))
