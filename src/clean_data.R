@@ -29,9 +29,16 @@ listings <- listings %>%
   select(-neighbourhood_group)
 
 #Now let's create a categorical value based on the price.
+
 xs <- quantile(listings$price,c(0,1/3,2/3,1))
 listings <- listings %>% 
   mutate(price_level=cut(price,breaks=xs,labels=c("low","median","high")))
+
+#Drop the na in price_level 
+listings<-listings[!is.na(listings$price_level), ]
+
+#Next, create a categorical value based on the room type 
+listings<-listings %>%  mutate(room_type_num=ifelse(room_type=="Private room",0,1) )
 
 #Finally, let's save the dataset to a file
 listings %>% write_csv(output_path)
