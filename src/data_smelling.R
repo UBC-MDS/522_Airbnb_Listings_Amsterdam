@@ -23,6 +23,9 @@ absurd_num_listings <- listings %>%
 absurd_min_nights <- listings %>% 
   arrange(desc(minimum_nights))
 
+#Drop non-sense large minimum nights
+listings<-listings %>% filter(minimum_nights!=1001,minimum_nights!=999)
+
 #Is there any non-null neighborhood? No.
 listings %>% 
   filter(!is.na(neighbourhood_group))
