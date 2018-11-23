@@ -8,14 +8,12 @@
 # Load libraries
 suppressPackageStartupMessages(library(tidyverse))
 suppressPackageStartupMessages(library(here))
-knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_knit$set(root.dir = here())
 
 #Capture command line arguments and convert into path strings
 args <- commandArgs(trailingOnly = TRUE)
-input_path <- file.path("data/", args[1])
-output_path <- file.path("data/", args[2])
-input_path <- "data/listings.csv"
+input_path <- here("data/", args[1])
+output_path <- here("data/", args[2])
+input_path <- here("data/listings.csv")
 
 #Read file
 listings=read_csv(input_path)
