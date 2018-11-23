@@ -60,21 +60,23 @@ From the data, we can see that there are several features inside:
 
 
 
-  After looking at the data, we predict that neighbourhood, location(latitude and longtitude), room_type, minimum_nights, number_of_reviews, reviews_per_month, calculated_host_listings_count, and availability_365 can possibly be the factors affecting the price. In order to find out the two strongest predictors, we are going to first do data visualzation and have a grasp of our data, then use the decision tree to find out the two strongest predictors.
+  After looking at the data, we predict that `neighbourhood`, `location(latitude and longtitude)`, `room_type`, `minimum_nights, number_of_reviews, reviews_per_month, calculated_host_listings_count, and availability_365 can possibly be the factors affecting the price. In order to find out the two strongest predictors, after cleaning the data, we are going to first do data visualzation and have a grasp of these factors visually, then use the decision tree to find out the two strongest predictors. 
   
-  However, we found out neighbouhood and room_type are categorical, which can be hard to analyze together with numeric data, so we decide to put them on the shelf at the moment. For the location, since we must combine two factors (latitude and longtitude) together when analyzing(otherwise it won't make sense to use them individually), at the present, we haven't learned how to combine two features into one and implement it in the decision tree, this time, we decide not to use these two features in the decision tree. However, we will demostrate how latitude and longtitude affect the price in a map later. Next, we are going to take a closer look to the remining factors, ans implement these features in decision tree: minimum_nights, number_of_reviews, reviews_per_month, calculated_host_listings_count, and availability_365. 
+
+##Data cleaning
+  
+  After taking a look of these features, we realized that Neighbourhood and location(latitude and longtitude) could act similarly in affecting the room price, and reviews_per_month and number_of_reviews could act similarly in affecting the room price also. Location is a more complicated feature than Neighbourhood, since it contains two features and we must combine these two features (latitude and longtitude) together when analyzing(otherwise it won't make sense to use them individually). At the moment, we haven't learned how to combine two features into one and implement it in the decision tree. Therefore, at this time, we decide not to use these two features. When we first looked at the data, we believed that reviews_per_month is a better feature to use than number_of_reviews because it is possible that some listing has more reviews because it is on airbnb longer than others. However, when we looked a deep look, we found out that there are more than 2000 missing values in the reviews_per_month, therefore, we decided to use number_of_reviews instead.
+  
+#However, we found out neighbouhood and room_type are categorical, which can be hard to analyze together with numeric data, so we decide to put them on the shelf at the moment. 
+  
+#However, we will demostrate how latitude and longtitude affect the price in a map later. Next, we are going to take a closer look to the remining factors, ans implement these features in decision tree: minimum_nights, number_of_reviews, reviews_per_month, calculated_host_listings_count, and availability_365. 
+
+
+##Data Visulazation
+
+  In this section, we are going to analyze if each feature affect the price by visulazing it. 
+  The first feature we are going to look at is the 
 
 
 
 
-
-
-neighbourhood, 
-latitude, 
-longitude, 
-room_type, 
-price, 
-minimum_nights, 
-number_of_reviews,
-reviews_per_month, 
-availability_365. 
