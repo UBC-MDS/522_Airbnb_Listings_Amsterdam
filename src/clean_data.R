@@ -3,7 +3,7 @@
 # Nov 20 2018
 
 
-# Usage: Rscript clean_data.R input_file output_file
+# Usage: Rscript clean_data.R listings.csv clean_listings.csv
 
 # Load libraries
 suppressPackageStartupMessages(library(tidyverse))
