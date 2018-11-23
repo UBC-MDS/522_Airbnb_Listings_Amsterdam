@@ -11,8 +11,8 @@ suppressPackageStartupMessages(library(here))
 
 #Capture command line arguments and convert into path strings
 args <- commandArgs(trailingOnly = TRUE)
-input_path <- here("data/", args[1])
-output_path <- here("data/", args[2])
+input_path <- here("data", args[1])
+output_path <- here("data", args[2])
 
 #Read file
 listings=read_csv(input_path)
