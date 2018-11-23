@@ -2,21 +2,88 @@
 # exploratory_analysis.R
 # Nov 22 2018
 
+# Usage: Rscript exploratory_analysis.R city_clean_data.csv city
+
 #Load libraries
 library(tidyverse)
+library(ggmap)
+library(here())
+
+#Capture command line arguments and convert into path strings
+args <- commandArgs(trailingOnly = TRUE)
+input_path <- here("data", args[1])
+output_path <- here("results", paste("exploratory", args[2], sep="-"))
 
 #Read data
-clean_listings <- read_csv("data/clean_listings.csv")
+clean_listings <- read_csv(input_path) %>% 
+    mutate(neighbourhood = as_factor(neighbourhood),
+           neighbourhood = fct_reorder(neighbourhood, price, .desc=TRUE))
 
 #Scatter plot between price and reviews
-clean_listings %>% ggplot(aes(x=number_of_reviews, y=price)) +
-    geom_point()
+price_reviews <- clean_listings %>% ggplot(aes(x=number_of_reviews, y=price)) +
+    geom_point(alpha=0.4) +
+    ggtitle("Exploratory - Price vs Number of Reviews") +
+    xlab("Number of Reviews") +
+    ylab("Price (US$)") +
+    scale_x_log10() +
+    theme_minimal()
+price_reviews
+ggsave(paste(output_path, "price-reviews.png", sep="_"), device="png")
 
 #Scatter plot between price and minimum of nights
-clean_listings %>% ggplot(aes(x=minimum_nights, y=price)) +
-  geom_point() +
-  scale_x_log10()
+price_minNights <- clean_listings %>% ggplot(aes(x=minimum_nights, y=price)) +
+    geom_point() +
+    scale_x_log10() +
+    ggtitle("Exploratory - Price vs Number of Reviews") +
+    xlab("Minimum number of nights") +
+    ylab("Price (US$)") +
+    theme_minimal()
+
+price_minNights
+ggsave(paste(output_path, "price-minNights.png", sep="_"), device="png")
 
 #Distribution of price per type of listing
-clean_listings %>% ggplot(aes(x=room_type, y=price)) +
-  geom_boxplot()
+price_roomType <- clean_listings %>% ggplot(aes(x=room_type, y=price)) +
+    geom_boxplot() +
+    ggtitle("Exploratory - Price vs Room Type") +
+    xlab("Room Type") +
+    ylab("Price (US$)") +
+    theme_minimal()
+
+price_roomType
+ggsave(here("results/exploratory_price_roomType.png"), device="png")
+ggsave(paste(output_path, "price-minNights.png", sep="_"), device="png")
+
+#Histogram of price
+price_histogram <- clean_listings %>% ggplot(aes(x=price)) +
+    geom_histogram() +
+    ggtitle("Exploratory - Price histogram") +
+    xlab("Room Type") +
+    ylab("Price (US$)") +
+    theme_minimal()
+
+price_histogram
+ggsave(paste(output_path, "price-histogram.png", sep="_"), device="png")
+
+#Boxplot of price per neighborhood
+price_neighborhood <- clean_listings %>% ggplot(aes(x=neighbourhood, y=price)) +
+  geom_boxplot() +
+  ggtitle("Exploratory - Price vs Neighborhood") +
+  xlab("Neighborhood") +
+  ylab("Price (US$)") +
+  theme_minimal() +
+  theme(axis.text.x=element_text(angle=90,hjust=1))
+
+price_neighborhood
+ggsave(paste(output_path, "price-neighborhood.png", sep="_"), device="png")
+
+#Map of price (FOR THE FUTURE)
+# bbox = make_bbox(clean_listings$longitude, clean_listings$latitude)
+# 
+# amsterdam_map <- ggmap::get_stamenmap(bbox, maptype = "toner-lite", zoom = 11) %>%
+#   ggmap::ggmap()
+# 
+# amsterdam_map +
+#   geom_tile(
+#     aes(x = longitude, y = latitude, fill = price),
+#     size = 2, data = clean_listings)

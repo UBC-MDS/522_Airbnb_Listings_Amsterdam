@@ -3,19 +3,16 @@
 # Nov 20 2018
 
 
-# Usage: Rscript clean_data.R input_file output_file
+# Usage: Rscript clean_data.R city_listings.csv city_clean_listings.csv
 
 # Load libraries
 suppressPackageStartupMessages(library(tidyverse))
 suppressPackageStartupMessages(library(here))
-knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_knit$set(root.dir = here())
 
 #Capture command line arguments and convert into path strings
 args <- commandArgs(trailingOnly = TRUE)
-input_path <- file.path("data/", args[1])
-output_path <- file.path("data/", args[2])
-input_path <- "data/listings.csv"
+input_path <- here("data", args[1])
+output_path <- here("data", args[2])
 
 #Read file
 listings=read_csv(input_path)
