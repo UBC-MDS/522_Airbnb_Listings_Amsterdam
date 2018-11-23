@@ -1,13 +1,15 @@
 Main Report
 ================
 
+The written report will provide a narrative for your project and present and discuss your findings. Fourth script: an .Rmd or .ipynb actually, that presents **original data**, **the statistical summaries**, and/or **the figures** in a little report. There should be a written narrative in this document that **introduces and justifies your question**, **introduces the data set**, **presents the findings/results**, and **interprets the findings/results** in context of the question. **Some critique** of the analysis is also expected (limitations, assumptions, etc) and **a statement of future directions** (what would you do next if you had more time to work on this). The report is expected to be 1-2 written pages (excluding figures, tables and references). You are expected to have a reference section and cite 2-3 external sources (data source can be one of these citations).
+
 Airbnb is Amsterdam!
 --------------------
 
-Airbnb renting has always been interesting. Some spots can be rented in higher prices, whereas other spots can only be rented in very low prices. Suppose you would like to be a host in Amsterdam, in order to be a successful host, it is a good idea to investgate the host listing data from airbnb and see what are the major factors affecting the room price. Luckily, we are going to do this job for you! We are going to analyse the host listing data in Amsterdam and find out the major factors affecting the price.
+Airbnb renting has always been interesting. Some spots can be rented in higher prices, whereas other spots can only be rented in very low prices. Suppose you would like to be a host in Amsterdam, in order to be a successful host, it is a good idea to investgate the host listing data from airbnb and see what are the major factors affecting the room price. In this project, we are going to do this job for those who want to be a successful host! Therefore, in our project, a question that is reasonable to ask is: What are the two strongest predictors of price for airbnb listings in Amsterdam? We are going to analyse the host listing data in Amsterdam and find out the answer!
 
-Prediction
-----------
+Analyzing and Prediction
+------------------------
 
 'minimum\_nights','number\_of\_reviews','calculated\_host\_listings\_count','availability\_365'
 
@@ -73,6 +75,6 @@ From the data, we can see that there are several features inside:
 -   **calculated\_host\_listings\_count**: Number of listings each host has simultaneously.
 -   **availability\_365**: The number of days that the listing is available in a 365 days, which is pre-defined by the host.
 
-After looking at the data, we predict that **neighbourhood**, **location(latitude and longtitude)**, room\_type, minimum\_nights, number\_of\_reviews, reviews\_per\_month, calculated\_host\_listings\_count, and availability\_365 can possibly be the factors affecting the price. However, we found out neighbouhood and room\_type are categorical, which can be hard to analyze together with numeric data, so we decide to put them on the shelf at the moment. For the location, since we must combine two features (latitude and longtitude) together when analyzing(otherwise it won't make sense to use them individually), at the present, we haven't learn how to combine two features into one feature and implement it in the decision tree, we are not going to use these two features in the decision tree. However, we will demostrate how latitude and longtitude affect the price in a map later. Therefore, we can going to take a closer look to the remining factors: minimum\_nights, number\_of\_reviews, reviews\_per\_month, calculated\_host\_listings\_count, and availability\_365
+After looking at the data, we predict that neighbourhood, location(latitude and longtitude), room\_type, minimum\_nights, number\_of\_reviews, reviews\_per\_month, calculated\_host\_listings\_count, and availability\_365 can possibly be the factors affecting the price. We predict that Location, room\_type, number\_of\_reviews, and reviews\_per\_month However, we found out neighbouhood and room\_type are categorical, which can be hard to analyze together with numeric data, so we decide to put them on the shelf at the moment. For the location, since we must combine two factors (latitude and longtitude) together when analyzing(otherwise it won't make sense to use them individually), at the present, we haven't learned how to combine two features into one feature and implement it in the decision tree, we decide not to use these two features in the decision tree. However, we will demostrate how latitude and longtitude affect the price in a map later. Next, we are going to take a closer look to the remining factors: minimum\_nights, number\_of\_reviews, reviews\_per\_month, calculated\_host\_listings\_count, and availability\_365.
 
 neighbourhood, latitude, longitude, room\_type, price, minimum\_nights, number\_of\_reviews, reviews\_per\_month, availability\_365.
