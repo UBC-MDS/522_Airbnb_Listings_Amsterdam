@@ -3,7 +3,7 @@
 # Nov 20 2018
 
 
-# Usage: Rscript clean_data.R listings.csv clean_listings.csv
+# Usage: Rscript clean_data.R city_listings.csv city_clean_listings.csv
 
 # Load libraries
 suppressPackageStartupMessages(library(tidyverse))
@@ -13,7 +13,6 @@ suppressPackageStartupMessages(library(here))
 args <- commandArgs(trailingOnly = TRUE)
 input_path <- here("data/", args[1])
 output_path <- here("data/", args[2])
-input_path <- here("data/listings.csv")
 
 #Read file
 listings=read_csv(input_path)
