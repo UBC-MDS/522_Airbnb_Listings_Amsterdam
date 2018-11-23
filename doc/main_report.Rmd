@@ -2,18 +2,83 @@
 title: "Main Report"
 output: github_document
 ---
+The written report will provide a narrative for your project and present and discuss your findings.
+
+
+Fourth script: an .Rmd or .ipynb actually, that presents **original data**, **the statistical summaries**, and/or **the figures** in a little report. There should be a written narrative in this document that 
+**introduces and justifies your question**, 
+
+**introduces the data set**, 
+
+**presents the findings/results**, 
+
+and **interprets the findings/results** in context of the question. 
+**Some critique** of the analysis is also expected (limitations, assumptions, etc) and 
+**a statement of future directions** (what would you do next if you had more time to work on this). 
+
+The report is expected to be 1-2 written pages (excluding figures, tables and references). You are expected to have a reference section and cite 2-3 external sources (data source can be one of these citations).
+
+
+
+
 
 ```{r setup, include=FALSE}
 library(tidyverse)
 library(here)
 knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_knit$set(root.dir = here())
-
 ```
 
+##Airbnb is Amsterdam!
+
+Airbnb renting has always been interesting. Some spots can be rented in higher prices, whereas other spots can only be rented in very low prices. 
+Suppose you would like to be a host in Amsterdam, in order to be a successful host, it is a good idea to investgate the host listing data from airbnb and see what are the major factors affecting the room price. In this project, we are going to do this job for those who want to be a successful host! We are going to analyse the host listing data in Amsterdam and find out the major factors affecting the price. Therefore, in this project, our question is to ask 
+
+##Analyzing and Prediction
+
+'minimum_nights','number_of_reviews','calculated_host_listings_count','availability_365'
+
+From the [Website](http://insideairbnb.com/get-the-data.html), we found the host listing data of Airbnb in Amsterdam. Before starting analyze the data, let's take a look at the data. 
 
 ```{r}
 data=read_csv("data/listings.csv")
-str(data)
+head(data)
 ```
 
+
+From the data, we can see that there are several features inside: 
+
+* **id**: Unique identification code for the listing
+* **name**: Descriptive name of the listing
+* **host_id**: Unique identification code for the host
+* **host_name**: First name of the host (privacy is respected. The data is open.)
+* **neighbourhood**: A categorical character variable that specifies the name of neighbourhood of the listing
+* **latitude**: A numeric variable that combining the **longitude** to represent the location of the listing
+* **longtitude**A numeric variable that combining the **latitude** to represent the location of the listing
+* **room_type**: A categorical variable including **Shared Room**, **Private Room** or **Entire Room/Apt**.
+* **price**: The price of the listing.
+* **minimum_nights**: The minimum number of nights the host requires to book their property.
+* **number_of_reviews**: Number of customer reviews regarding the listing.
+* **last_review**: Date of the last review.
+* **reviews_per_month**: Number of customer reviews per month.
+* **calculated_host_listings_count**: Number of listings each host has simultaneously.
+* **availability_365**: The number of days that the listing is available in a 365 days, which is pre-defined by the host.
+
+
+After looking at the data, we predict that neighbourhood, location(latitude and longtitude), room_type, minimum_nights, number_of_reviews, reviews_per_month, calculated_host_listings_count, and availability_365 can possibly be the factors affecting the price. We predict that Location, room_type, number_of_reviews, and reviews_per_month
+However, we found out neighbouhood and room_type are categorical, which can be hard to analyze together with numeric data, so we decide to put them on the shelf at the moment. For the location, since we must combine two factors (latitude and longtitude) together when analyzing(otherwise it won't make sense to use them individually), at the present, we haven't learned how to combine two features into one feature and implement it in the decision tree, we decide not to use these two features in the decision tree. However, we will demostrate how latitude and longtitude affect the price in a map later. Next, we are going to take a closer look to the remining factors: minimum_nights, number_of_reviews, reviews_per_month, calculated_host_listings_count, and availability_365. 
+
+
+
+
+
+
+neighbourhood, 
+latitude, 
+longitude, 
+room_type, 
+price, 
+minimum_nights, 
+number_of_reviews,
+reviews_per_month, 
+availability_365. 
