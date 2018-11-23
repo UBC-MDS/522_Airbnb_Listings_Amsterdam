@@ -1,10 +1,14 @@
 # AirBnb Listing Prices in Amsterdam
 
+What are the factors that can best predict the prices of an AirBnb listing in Amsterdam? In this project, we'll use AirBnB public data to better understand the underlying economics of rental prices in the platform.
+
+We believe that AirBnb data represents an excellent online proxy of the local housing market and may generate insights to other industries such as real state and construction.
+
 ## Team
 
-- Gabriel Francisco Medeiros Bogo
-- Yuwei Liu
-- Jielin Yu
+- [Gabriel Francisco Medeiros Bogo](www.github.com/GabrielBogo)
+- [Yuwei Liu](https://github.com/liuyuwei169)
+- [Jielin Yu](https://github.com/jielinyu)
 
 ## Data
 
@@ -29,14 +33,7 @@ Summary information and metrics for AirBnb listings in Amsterdam. The data varia
 * **calculated_host_listings_count**: number of listings that host has simultaneously
 * **availability_365**: the number of days that the listing is available in a year, which is pre-defined by the host.
 
-## Proof of Loading Data
-
-We can use the script under src to load data.
-
-![Main report (sketch)](https://github.com/liuyuwei169/DSCI-522_Airbnb_Listings_Amsterdam/blob/master/img/load_data_screenshot.png)
-
-
-## Questions:
+## Main research question:
 
 - What are the two strongest predictors of price for airbnb listings in Amsterdam?
 
@@ -54,16 +51,13 @@ Step 1. Data wrangling:
 - Identifying outliers
 - Converting the price column into a categorical variable with three levels: high, median and low
 
-Step 2. Linear Regression :
-
- A Multiple Linear Regression can provide this information by the weight of each of the features. This will be performed in parallel to the classification algorithm below.
-
-Step 3. Decision Tree classification:
+Step 2. Decision Tree classification:
 
 - Separate the dataset into training and testing datasets
 - Feature vectors are `minimum_nights`, `number_of_reviews`, `calculated_host_listings`, `availability_365`
 - Target variable is the categorical price level
 - Use `scikit-learn` to build a predictive model
+- Identify the most important features
 
 
 ## Summarization and Visualization
