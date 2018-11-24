@@ -9,10 +9,11 @@
 ##################################################
 
 # step 1
-Rscript clean_data.R city_listings.csv city_clean_listings.csv
+Rscript src/clean_data.R data/amsterdam_listings.csv data/amsterdam_clean_listings.csv
 
 # step 2
-Rscript exploratory_analysis.R city_clean_data.csv city
+Rscript src/exploratory_analysis.R data/amsterdam_clean_listings.csv amsterdam
+
 
 # step 3
 python src/decision_tree_model.py data/amsterdam_clean_listings.csv results/
