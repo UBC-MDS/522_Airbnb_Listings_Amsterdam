@@ -86,11 +86,11 @@ Usage:
 #### Step 4. Draw the Decision Tree
 
 - Load the binary file of the Decision Tree
-- Export an image with the drawing of the Decision Tree_graph
+- Export an image with the drawing of the Decision Tree
 
 Script: [src/decision_tree_exports.py](src/decision_tree_exports.py)  
 Usage:
-`python src/decision_tree_exports.py results/finalized_model.sav results/``
+`python src/decision_tree_exports.py results/finalized_model.sav results/`
 
 #### Step 5: Final report
 
