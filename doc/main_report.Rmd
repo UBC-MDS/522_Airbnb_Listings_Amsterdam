@@ -2,15 +2,15 @@
 title: "Main Report"
 output: github_document
 ---
-The written report will provide a narrative for your project and present and discuss your findings.
-Fourth script: an .Rmd or .ipynb actually, that presents **original data**, **the statistical summaries**, and/or **the figures** in a little report. There should be a written narrative in this document that 
-**introduces and justifies your question**, 
-**introduces the data set**, 
-**presents the findings/results**, 
-and **interprets the findings/results** in context of the question. 
-**Some critique** of the analysis is also expected (limitations, assumptions, etc) and 
-**a statement of future directions** (what would you do next if you had more time to work on this). 
-The report is expected to be 1-2 written pages (excluding figures, tables and references). You are expected to have a reference section and cite 2-3 external sources (data source can be one of these citations).
+#The written report will provide a narrative for your project and present and discuss your findings.
+#Fourth script: an .Rmd or .ipynb actually, that presents **original data**, **the statistical summaries**, and/or **the figures** #in a little report. There should be a written narrative in this document that 
+#**introduces and justifies your question**, 
+#**introduces the data set**, 
+#**presents the findings/results**, 
+#and **interprets the findings/results** in context of the question. 
+#**Some critique** of the analysis is also expected (limitations, assumptions, etc) and 
+#**a statement of future directions** (what would you do next if you had more time to work on this). 
+#The report is expected to be 1-2 written pages (excluding figures, tables and references). You are expected to have a reference #section and cite 2-3 external sources (data source can be one of these citations).
 
 
 
@@ -30,12 +30,10 @@ knitr::opts_knit$set(root.dir = here())
 
 ##Analyzing and Prediction
 
-'minimum_nights','number_of_reviews','calculated_host_listings_count','availability_365'
-
   From the [Website](http://insideairbnb.com/get-the-data.html), we found the host listing data of Airbnb in Amsterdam. Before starting analyze the data, let's take a look at the data. 
 
 ```{r}
-data=read_csv("data/listings.csv")
+data=read_csv("data/amsterdam_listings.csv")
 head(data)
 ```
 
@@ -60,12 +58,12 @@ From the data, we can see that there are several features inside:
 
 
 
-  After looking at the data, we predict that `neighbourhood`, `location(latitude and longtitude)`, `room_type`, `minimum_nights, number_of_reviews, reviews_per_month, calculated_host_listings_count, and availability_365 can possibly be the factors affecting the price. In order to find out the two strongest predictors, after cleaning the data, we are going to first do data visualzation and have a grasp of these factors visually, then use the decision tree to find out the two strongest predictors. 
+  After looking at the data, we predict that `neighbourhood`, `location(latitude and longtitude)`, `room_type`, `minimum_nights`, `number_of_reviews`, `reviews_per_month`, `calculated_host_listings_count`, and `availability_365` can possibly be the factors affecting the price. In order to find out the two strongest predictors, after cleaning the data, we are going to first do data visualzation and have a grasp of these factors visually, then use the decision tree to find out the two strongest predictors. 
   
 
 ##Data cleaning
   
-  After taking a look of these features, we realized that Neighbourhood and location(latitude and longtitude) could act similarly in affecting the room price, and reviews_per_month and number_of_reviews could act similarly in affecting the room price also. Location is a more complicated feature than Neighbourhood, since it contains two features and we must combine these two features (latitude and longtitude) together when analyzing(otherwise it won't make sense to use them individually). At the moment, we haven't learned how to combine two features into one and implement it in the decision tree. Therefore, at this time, we decide not to use these two features. When we first looked at the data, we believed that reviews_per_month is a better feature to use than number_of_reviews because it is possible that some listing has more reviews because it is on airbnb longer than others. However, when we looked a deep look, we found out that there are more than 2000 missing values in the reviews_per_month, therefore, we decided to use number_of_reviews instead.
+  After taking a look of these features, we realized that `neighbourhood` and `location(latitude and longtitude)` could act similarly in affecting the room price, and `reviews_per_month` and `number_of_reviews` could act similarly in affecting the room price also. `Latitude and longtitude` is a more complicated feature than `Neighbourhood`, since it contains two features and we must combine these two features together when analyzing(otherwise it won't make sense to use them individually). At the moment, we haven't learned how to combine two features into one and implement it in the decision tree. Therefore, at this time, we decide not to use these two features. For `reviews_per_month` and `number_of_reviews`, when we first looked at the data, we believed that `reviews_per_month` is a better feature to use than `number_of_reviews` because it is possible that some listing has more reviews because it is on airbnb longer than others. However, when we took a deep look, we found out that there are more than 2000 missing values in the `reviews_per_month`, therefore, we decided to use `number_of_reviews` instead.
   
 #However, we found out neighbouhood and room_type are categorical, which can be hard to analyze together with numeric data, so we decide to put them on the shelf at the moment. 
   
@@ -74,9 +72,46 @@ From the data, we can see that there are several features inside:
 
 ##Data Visulazation
 
-  In this section, we are going to analyze if each feature affect the price by visulazing it. 
-  The first feature we are going to look at is the 
+  In this section, we are going to explore if each feature affects the price by visulazing it. 
+  The first one we are going to look at is the relationship between number of reviews of a listing and its price. 
+  
+![Firgure 1: Price vs Number of Reviews](../results/exploratory-amsterdam_price-reviews.png)
+Firgure 1: Relationship between the Number of Reviews per Listing and Price
+
+  From the graph, we can see that after the number of reviews greater than 10, there are many points concentrating on the lower end, whereas the upper part doesn't have that many points. As the number of reviews increases, the points at the lower part are getting fewer and fewer. This means that after the number of reviews greater than 10, as number of reviews increases, there are fewer listings that have high price. From this graph, we believe that number of reviews could be a predictor of the price, however, we are not sure if it is a strong predictor yet.
+  
+  
+  The second one we are going to look at is the relationship between minimum nights the host requires of a listing and its price.
+  
+![Firgure 2: Price vs Minimum number of nights](../results/exploratory-amsterdam_price-minNights.png)
+Firgure 2: Relationship between Minimum number of nights host requires and price
 
 
+
+  The third one we are going to look at is the relationship between the room type of a listing and its price. 
+
+![Firgure 3: Price vs Room Type](../results/exploratory_price_roomType.png)
+Firgure 3: Comparision of the maximum, minimun, 25% percetile, median, and 75% percetile of prices for different room types
+
+  From this graph, we can see that the median of `Entire home/apt` is much higher than the other two, and the median of `Private Room` is higher than `Shared Room`, which makes sense since usually an `Entire home/apt` has larger area than a `Private room` and a `Shared room`, and a `Private room` has better privacy than a `Shared room`. However, if we take a look at the minimum prices, the difference isn't that big, and the minimum of a `Shared room` is even bigger than the other two. For the maximum price, `Entire home/apt` has similar value with the `Private room`, but there are more `Entire home/apt` priced over 300. Also, the 75% precentile of `Shared room` is higher than `Private room`. All in all, if we only look at the median, we can see that price is influenced by the `room_type` and `room_type` can be a predictor of the price. However, maximum, minimum, and 75% precentile of the prices are not that consistent with our found relationship with the median price, so we can not sure if `room_type` will be a strong predictor.
+  
+  
+  The fourth one we are going to look at is the relationship between the neighbourhood of a listing and its price
+
+![Firgure 4: Price vs Neighborhood](../results/exploratory-amsterdam_price-neighborhood.png)
+Firgure 4: Comparision of the maximum, minimun, 25% percetile, median, and 75% percetile of prices for different neighbourhood
+    
+  In this graph, we can see there is a tendency that as neighbourhood changes from left to right, the median of the prices goes down. However, the maximum and minimum prices doesn't change that much as eighbourhood changes. Also, although 25% percentile and 75% percentile of prices decrease in general form left to right, there are some exceptions. For example, the 75% percentile of prices in `Buitenbeldent-Zuidas` is higher than some of its left conterparts. However, if we only consider the median of the prices, we can say that neighbourhood can be a predictor of the price. However, again we don't know if it will be a strong predictor.
+  
+
+  The fifth one we are going to look at is the relationship between the number of listings that listing host has and the price of that listing.
+  
+![Firgure 5: Price vs Number of listings per host](../results/exploratory-amsterdam_price-listingsCount.png)
+
+
+
+  The last one we are going to look at is the relationship between the number of availability per 365 days of a listing and the its price.
+
+![Firgure 6: Price vs Number of listings per host](../results/exploratory-amsterdam_price-listingsCount.png)
 
 
