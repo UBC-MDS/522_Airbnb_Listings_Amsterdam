@@ -1,11 +1,15 @@
 #! /usr/bin/env Rscript
 # clean_data.R
+
+# Gabriel Bogo
 # Nov 20 2018
 
+# Purpose: basic data wrangling and cleaning for subsequent modeling.
 
-# Example usage: Rscript src/clean_data.R data/amsterdam_listings.csv data/amsterdam_clean_listings.csv
+# Example usage:
+# Rscript src/clean_data.R data/amsterdam_listings.csv data/amsterdam_clean_listings.csv
 
-# Load libraries
+
 suppressPackageStartupMessages(library(tidyverse))
 suppressPackageStartupMessages(library(here))
 

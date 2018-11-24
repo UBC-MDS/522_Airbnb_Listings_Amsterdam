@@ -1,10 +1,14 @@
 #! /usr/bin/env Rscript
 # exploratory_analysis.R
+
+
+# Gabriel Bogo
 # Nov 22 2018
+
+# Purpose: generate exploratory figures to provide insights for statistical modeling.
 
 # Example usage: Rscript src/exploratory_analysis.R data/amsterdam_clean_listings.csv amsterdam
 
-#Load libraries
 library(tidyverse)
 library(ggmap)
 library(here())

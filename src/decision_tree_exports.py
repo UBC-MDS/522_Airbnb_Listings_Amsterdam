@@ -4,15 +4,13 @@
 # Jielin Yu
 # Nov 23 2018
 
-#This script output the decision tree graph
+#This script outputs the decision tree graph
 #
 # Input:
 #      - results/finalized_model.sav
 #
 # Output:
 #       - "Tree_graph"
-#
-
 
 #Usage: python src/decision_tree_exports.py results/finalized_model.sav results/
 
@@ -51,7 +49,7 @@ def save_and_show_decision_tree(model,class_names = ['low', 'median', 'high'],sa
 
 def main():
     '''
-    This function load the model it builds up before and output a decision tree graph.
+    This function loads the model and outputs a decision tree graph.
 
     '''
 

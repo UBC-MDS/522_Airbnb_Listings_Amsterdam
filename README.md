@@ -40,26 +40,60 @@ Summary information and metrics for AirBnb listings in Amsterdam. The data varia
 - Type of Question: **Predictive**
 
 
-## Analysis Plan
+## Analysis Workflow
 
-Our goal is to determine which of the features at hand have the highest dependence with the data.
+Our goal is to determine which of the features at hand have the highest
+dependence with the data. To achieve that, we follow the steps below:
 
-Step 1. Data wrangling:
+#### Step 1. Data wrangling:
 
-- Cleaning missing and null values
-- Pre-selecting useful features
-- Identifying outliers
-- Converting the price column into a categorical variable with three levels: high, median and low
+- Clean missing and null values (for simplicity, we simply removed the
+missing values for the features we used)
+- Identify and remove outliers (removed top and bottom 2.5% quantile)
+- Convert the price column into a categorical variable with three
+levels: **high**, **median** and **low**. This will be our response variable.
 
-Step 2. Decision Tree classification:
+Script: [src/clean_data.R](src/clean_data.R)  
+Usage (all commands should be run from the root directory):  
+`Rscript src/clean_data.R data/amsterdam_listings.csv data/amsterdam_clean_listings.csv`
+
+#### Step 2. Exploratory Data Analysis
+
+- Generate scatter plots to assess the relationship of multiple features and
+the response variable
+
+Script: [src/exploratory_analysis.R](src/exploratory_analysis.R)  
+Usage:
+`Rscript src/exploratory_analysis.R data/amsterdam_clean_listings.csv amsterdam`
+
+#### Step 3. Decision Tree classification:
 
 - Separate the dataset into training and testing datasets
-- Feature vectors are `minimum_nights`, `number_of_reviews`, `calculated_host_listings`, `availability_365`
+- Feature vectors are `minimum_nights`, `number_of_reviews`, `calculated_host_listings`, `availability_365` and `room_type_num`
+- This pre-selection of features was carried out based on the context - some
+variables are just a mathematical transformation of another (`number_of_reviews` and `reviews_per_month`), others just don't make much sense (`name`, `id`, etc). Also, `neighborhood`
+and geographical coordinates were not included in this first version of the analysis
+because their treatment wouldn't fit in our time schedule.
 - Target variable is the categorical price level
 - Use `scikit-learn` to build a predictive model
 - Identify the most important features
+- Export the model as a binary file
 
+Script: [src/decision_tree_model.py](src/decision_tree_model.py)  
+Usage:
+`python src/decision_tree_model.py data/amsterdam_clean_listings.csv results/``
 
-## Summarization and Visualization
+#### Step 4. Draw the Decision Tree
 
-First, we will make multiple scatterplots to show the relationships of different features with the prices. Then, we will draw a decision tree and report an ordered list of four predictors. Also, we will report a classification error of our model.
+- Load the binary file of the Decision Tree
+- Export an image with the drawing of the Decision Tree_graph
+
+Script: [src/decision_tree_exports.py](src/decision_tree_exports.py)  
+Usage:
+`python src/decision_tree_exports.py results/finalized_model.sav results/``
+
+#### Step 5: Final report
+
+To render the report:
+`rmarkdown::render("doc/main_report.Rmd")`  
+Report: [doc/main_report.md](doc/main_report.md)
