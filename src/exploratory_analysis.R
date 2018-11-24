@@ -28,7 +28,7 @@ price_reviews <- clean_listings %>% ggplot(aes(x=number_of_reviews, y=price)) +
     ylab("Price (US$)") +
     scale_x_log10() +
     theme_minimal()
-price_reviews
+# price_reviews
 ggsave(paste(output_path, "price-reviews.png", sep="_"), device="png")
 
 #Scatter plot between price and minimum of nights
@@ -40,7 +40,7 @@ price_minNights <- clean_listings %>% ggplot(aes(x=minimum_nights, y=price)) +
     ylab("Price (US$)") +
     theme_minimal()
 
-price_minNights
+# price_minNights
 ggsave(paste(output_path, "price-minNights.png", sep="_"), device="png")
 
 #Distribution of price per type of listing
@@ -51,9 +51,8 @@ price_roomType <- clean_listings %>% ggplot(aes(x=room_type, y=price)) +
     ylab("Price (US$)") +
     theme_minimal()
 
-price_roomType
+# price_roomType
 ggsave(here("results/exploratory_price_roomType.png"), device="png")
-ggsave(paste(output_path, "price-minNights.png", sep="_"), device="png")
 
 #Boxplot of price per neighborhood
 price_neighborhood <- clean_listings %>% ggplot(aes(x=neighbourhood, y=price)) +
@@ -77,7 +76,7 @@ price_listingsCount <- clean_listings %>% ggplot(aes(x=calculated_host_listings_
   theme(axis.text.x=element_text(angle=90,hjust=1))
 
 price_listingsCount
-ggsave(paste(output_path, "price-listingsCount", sep="_"), device="png")
+ggsave(paste(output_path, "price-listingsCount.png", sep="_"), device="png")
 
 #Scatterplot of price and availability_365
 price_availability <- clean_listings %>% ggplot(aes(x=availability_365, y=price)) +
@@ -89,7 +88,7 @@ price_availability <- clean_listings %>% ggplot(aes(x=availability_365, y=price)
   theme(axis.text.x=element_text(angle=90,hjust=1))
 
 price_availability
-ggsave(paste(output_path, "price-availability", sep="_"), device="png")
+ggsave(paste(output_path, "price-availability.png", sep="_"), device="png")
 
 #Map of price (FOR THE FUTURE)
 # bbox = make_bbox(clean_listings$longitude, clean_listings$latitude)
