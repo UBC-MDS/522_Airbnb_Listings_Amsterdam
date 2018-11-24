@@ -1,10 +1,28 @@
 #!/usr/bin/env python
 # decision_tree_model.py
+<<<<<<< HEAD
 #Nov 23 2018
 
 # This script inputs listing data and split the data to train data and test data. Then, find optimal hyperparameter to build up the best model
 # We compare test data and predicted data and get a model accuracy score
 # Finally, we list each of the features' importance to determine the two most significant ones.
+=======
+# Jielin Yu 
+# Nov 23 2018
+
+# Purpose: This script inputs listing data and split the data to train data and test data. Then, find optimal hyper parameter to            build up the best model. Next, We compare test data and predicted data and get a model accuracy score. Finally, we                list each features' importance to figure out two significant feature
+
+# Input:
+#       - data/amsterdam_clean_listings.csv
+
+# Output:
+
+#      - "finalized_model.sav"
+#      - 'depth_score.csv'
+#      - 'pred.csv'
+#      - 'model_score.csv'
+#      - 'importance_df.csv'
+>>>>>>> upstream/master
 
 # Dependencies: argparse, pandas, numpy, sklearn, pickle
 #
@@ -27,6 +45,10 @@ parser.add_argument('output_path', help='Output file to dump the finalized model
 args = parser.parse_args()
 
 def main():
+    
+    '''
+    mian function provides a general routine for a decision tree modeling
+    '''
 
     # set random state
     rstate = 1234

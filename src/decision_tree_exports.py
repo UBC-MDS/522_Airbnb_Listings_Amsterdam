@@ -1,10 +1,18 @@
 #!/usr/bin/env python
 # decision_tree_results.py
 
-
+# Jielin Yu
 # Nov 23 2018
 
 #This script output the decision tree graph
+#
+# Input:
+#      - results/finalized_model.sav
+#
+# Output:
+#       - "Tree_graph"
+#
+
 
 #Usage: python src/decision_tree_exports.py results/finalized_model.sav results/
 
@@ -28,7 +36,7 @@ args = parser.parse_args()
 
 def save_and_show_decision_tree(model,class_names = ['low', 'median', 'high'],save_file_prefix = args.output_path + "Tree_graph", **kwargs):
     """
-    Saves the decision tree model as a pdf and a
+    Saves the decision tree model as a pdf
     """
     feature_cols = ['minimum_nights','number_of_reviews','calculated_host_listings_count','availability_365','room_type_num']
     dot_data = tree.export_graphviz(model, out_file=None,
@@ -42,6 +50,11 @@ def save_and_show_decision_tree(model,class_names = ['low', 'median', 'high'],sa
     return graph
 
 def main():
+    '''
+    This function load the model it builds up before and output a decision tree graph.
+
+    '''
+
     # set random state
     rstate = 1234
 
