@@ -129,7 +129,7 @@ First, in order to get the higher accuracy, we decide to test the accuracy on th
 
 Next, we use the training data again for fitting the model that has the hyperparameter of `max_depth=4`. After fitting the model, we are going to use this model and our testing data to predict the outputs. This is the decision tree we get:
 
-[Figure 7: Decision Tree](../results/Tree_graph.pdf) Figure 7: The decision tree we made for analyzing the strong predictors of the price
+![Figure 7: Decision Tree](../results/Tree_graph.pdf) Figure 7: The decision tree we made for analyzing the strong predictors of the price
 
 After getting the decision tree and outputs from the model, we are going to alculate the accuracy of the outputs by comparing the outputs with the actual outputs we already had in the testing data. The accuracy we came out is *0.48239343394228223*, which is not high. This could be because all features we analyzed are not really a super strong predictor for pricing, which is actully in acordance with the findings in our data visualization.
 
