@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_knit$set(root.dir = here())
 ```
 
-##Airbnb is Amsterdam!
+##Airbnb in Amsterdam!
 
   Airbnb renting has always been interesting. Some spots can be rented in higher prices, whereas other spots can only be rented in very low prices. 
   Suppose you would like to be a host in Amsterdam, in order to be a successful host, it is a good idea to investgate the host listing data from airbnb and see what are the major predictors of the room prices. In this project, we are going to do this job for those who want to be a successful host! Therefore, in our project, a question that is reasonable to ask is: What are the two strongest predictors of price for airbnb listings in Amsterdam? We are going to analyse the host listing data in Amsterdam and find out the answer! 
@@ -133,13 +133,15 @@ Figure 7: The decision tree we made for analyzing the strong predictors of the p
   After knowing the accuracy of the outputs, we have an idea about how accurate this model is. Next step, we are going to use this model to find out the most important factors affecting the price. After testing, we found out that `room_type` and `availability_365` are the two strongest predictors of the price. However, due to the low accuracy of this model, we are not very confident about the results. From the results of our decision tree, we are suprised that `availability_365` is actually an important predictor for pricing, whereas `number of reviews` is not. This is different from the results we explored in data visualization. Since the accuracy of the model is low, it is possible that the results from the decision trees are less trustworthy than the data visualzation, but it also could be the case that visualzation isn't accurate, since there are so many dots in a graph. 
   
 ##Conclusion and Limitation
-Overall, from the data visualzation, apart from `neighborhood`, we expected `Number of reviews`, and `room type` to be the two strongest predictors. However, from the decision tree, we got `room_type` and `availability_365` as the two strongest predictors. Regardlessly, we are confident that `room_type` is a strong predictor of the price, but we are less sure about the other two. 
+In overall, from the data visualzation, apart from `neighborhood`, we expected `Number of reviews`, and `room type` to be the two strongest predictors. However, from the decision tree, we got `room_type` and `availability_365` as the two strongest predictors. Regardlessly, we are confident that `room_type` is a strong predictor of the price, but we are less sure about the other two. 
 
 We do know that our analysis has limitation. For example, we found out that `neighborhood` could be a strong predictor on pricing, however, due to the complexity of this categorical feature, we decided not to put it in the tree. Also, as mentioned before, we used `number of reviews` instead or `reviews per month`, which means some listings could simply can more reviews because it is on Airbnb for a long time, not because of the pricing. We also didn't analyze the `longtitude` and `latitude`, because they are a complicated feature combining together. In the future, our next approach could be to analyze if `longtitude` and `latitude` affect the price. 
 
 ##References
   Scikit-learn.org. (2018). sklearn.tree.DecisionTreeClassifier — scikit-learn 0.20.1 documentation. [online] Available at: https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html [Accessed 24 Nov. 2018].
+  
   Brownlee, J. (2018). Save and Load Machine Learning Models in Python with scikit-learn. [online] Machine Learning Mastery. Available at: https://machinelearningmastery.com/save-load-machine-learning-models-python-scikit-learn/ [Accessed 24 Nov. 2018].
+  
   Inside Airbnb. (2018). Inside Airbnb. Adding data to the debate.. [online] Available at: http://insideairbnb.com/get-the-data.html [Accessed 24 Nov. 2018].
   
   
