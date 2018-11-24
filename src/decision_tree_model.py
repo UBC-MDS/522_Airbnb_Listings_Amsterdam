@@ -1,15 +1,15 @@
 #!/usr/bin/env python
 # decision_tree_model.py
 #Nov 23 2018
-# This script inputs listing data and split the data to train data and test data. Then, find optimal hyper parameter to build up the best model
+
+# This script inputs listing data and split the data to train data and test data. Then, find optimal hyperparameter to build up the best model
 # We compare test data and predicted data and get a model accuracy score
-# Finally, we list each features' importance to figure out two significant feature
+# Finally, we list each of the features' importance to determine the two most significant ones.
 
 # Dependencies: argparse, pandas, numpy, sklearn, pickle
 #
 # Usage: python src/decision_tree_model.py data/amsterdam_clean_listings.csv results/
 
-# import libraries
 import argparse
 import pandas as pd
 import numpy as np
@@ -25,8 +25,6 @@ parser.add_argument('input_file_path', help='File path of clean data for a speci
 parser.add_argument('output_path', help='Output file to dump the finalized model')
 
 args = parser.parse_args()
-
- 
 
 def main():
 
@@ -63,57 +61,36 @@ def main():
 
     depth_score_test_df = pd.DataFrame(test_accuracy, index=depths, columns=['score'])
     depth_score_test_df = depth_score_test_df.sort_values(by="score",ascending=False)
-    #depth_score_test_df.to_csv(output_path + 'depth_score.csv') 
-
 
     # Fit with best hyper parameters
     from sklearn import tree
     model = tree.DecisionTreeClassifier(max_depth=4)
     model.fit(X_train,y_train)
 
-    
     #Compare y_test and predicted y
     predictions = model.predict(X_test)
     pred = y_test.to_frame()
     pred['prediction'] = predictions
-    
-    
+
     # score of test
     model_score = model.score(X_test,y_test)
     model_score=[model_score]
     model_score_df = pd.DataFrame(model_score,columns=['score'],dtype=float)
-    
+
     # Calculate most important features
     feature_importances = model.feature_importances_
     importance_df = pd.DataFrame({"Feature":feature_cols,"Importance":feature_importances})
     importance_df = importance_df.sort_values(by="Importance",ascending=False)
-    
-    #save the model to disk
 
+    #save the model to disk
     model_save = output_path + "finalized_model.sav"
     pickle.dump(model,open(model_save,'wb'))
-    
-    
-    #export the results as csv file 
+
+    #export the results as csv file
     depth_score_test_df.to_csv(output_path + 'depth_score.csv')
     pred.to_csv(output_path + 'pred.csv')
     model_score_df.to_csv(output_path + 'model_score.csv')
     importance_df.to_csv(output_path + 'importance_df.csv')
-    
-    
-    
-    if __name__ == "__main__":
-        main()
-    
-main()
-    
-    
-    
-    
-    
-    
-    
-    
- 
 
-    
+if __name__ == "__main__":
+    main()

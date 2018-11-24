@@ -2,7 +2,7 @@
 # exploratory_analysis.R
 # Nov 22 2018
 
-# Usage: Rscript exploratory_analysis.R city_clean_data.csv city
+# Example usage: Rscript src/exploratory_analysis.R data/amsterdam_clean_listings.csv amsterdam
 
 #Load libraries
 library(tidyverse)
@@ -11,12 +11,12 @@ library(here())
 
 #Capture command line arguments and convert into path strings
 args <- commandArgs(trailingOnly = TRUE)
-input_path <- here("data", args[1])
+input_path <- args[1]
 output_path <- here("results", paste("exploratory", args[2], sep="-"))
 
 # input_path <- "data/amsterdam_clean_listings.csv"
 #Read data
-clean_listings <- read_csv(input_path) %>% 
+clean_listings <- read_csv(input_path, col_types="iciccddciiiDdiici") %>%
     mutate(neighbourhood = as_factor(neighbourhood),
            neighbourhood = fct_reorder(neighbourhood, price, .desc=TRUE))
 
@@ -64,7 +64,7 @@ price_neighborhood <- clean_listings %>% ggplot(aes(x=neighbourhood, y=price)) +
   theme(axis.text.x=element_text(angle=90,hjust=1))
 
 price_neighborhood
-ggsave(paste(output_path, "price-neighborhood.png", sep="_"), device="png") 
+ggsave(paste(output_path, "price-neighborhood.png", sep="_"), device="png")
 
 #Scatterplot of price and calculated_host_listing_counts
 price_listingsCount <- clean_listings %>% ggplot(aes(x=calculated_host_listings_count, y=price)) +
@@ -92,10 +92,10 @@ ggsave(paste(output_path, "price-availability.png", sep="_"), device="png")
 
 #Map of price (FOR THE FUTURE)
 # bbox = make_bbox(clean_listings$longitude, clean_listings$latitude)
-# 
+#
 # amsterdam_map <- ggmap::get_stamenmap(bbox, maptype = "toner-lite", zoom = 11) %>%
 #   ggmap::ggmap()
-# 
+#
 # amsterdam_map +
 #   geom_tile(
 #     aes(x = longitude, y = latitude, fill = price),
