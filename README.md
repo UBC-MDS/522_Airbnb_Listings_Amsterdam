@@ -81,7 +81,7 @@ because their treatment wouldn't fit in our time schedule.
 
 Script: [src/decision_tree_model.py](src/decision_tree_model.py)  
 Usage:
-`python src/decision_tree_model.py data/amsterdam_clean_listings.csv results/``
+`python src/decision_tree_model.py data/amsterdam_clean_listings.csv results/`
 
 #### Step 4. Draw the Decision Tree
 
