@@ -4,9 +4,11 @@ What are the factors that can best predict the prices of an AirBnb listing in Am
 
 We believe that AirBnb data represents an excellent online proxy of the local housing market and may generate insights to other industries such as real state and construction.
 
+TL;DR: Here is our [final report](doc/main_report.md).
+
 ## Team
 
-- [Gabriel Francisco Medeiros Bogo](www.github.com/GabrielBogo)
+- [Gabriel Francisco Medeiros Bogo](https:/github.com/GabrielBogo)
 - [Yuwei Liu](https://github.com/liuyuwei169)
 - [Jielin Yu](https://github.com/jielinyu)
 
@@ -97,3 +99,15 @@ Usage:
 To render the report:
 `rmarkdown::render("doc/main_report.Rmd")`  
 Report: [doc/main_report.md](doc/main_report.md)
+
+## Dependencies
+#### R version 3.5.1
+- tidyverse 1.2.1
+- here 0.1
+
+#### Python 3.6.5
+- pandas==0.23.0
+- numpy==1.14.3
+- scikit-learn==0.19.1
+- matplotlib==2.2.2
+- graphviz==0.8.4
