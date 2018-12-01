@@ -48,11 +48,11 @@ price_minNights <- clean_listings %>% ggplot(aes(x=minimum_nights, y=price_level
 ggsave(paste(output_path, "price-minNights.png", sep="_"), device="png")
 
 #Distribution of price per type of listing
-price_roomType <- clean_listings %>% ggplot(aes(x=room_type, y=price_level)) +
+price_roomType <- clean_listings %>% ggplot(aes(x=room_type, y=price)) +
     geom_boxplot() +
     ggtitle("Exploratory - Price vs Room Type") +
     xlab("Room Type") +
-    ylab("Price level") +
+    ylab("Price (US$)") +
     theme_minimal()
 
 # price_roomType
@@ -63,7 +63,7 @@ price_neighborhood <- clean_listings %>% ggplot(aes(x=neighbourhood, y=price)) +
   geom_boxplot() +
   ggtitle("Exploratory - Price vs Neighborhood") +
   xlab("Neighborhood") +
-  ylab("Price(US$)") +
+  ylab("Price (US$)") +
   theme_minimal() +
   theme(axis.text.x=element_text(angle=90,hjust=1))
 
