@@ -57,7 +57,7 @@ From the data, we can see that there are several features inside:
   
   After taking a look of these features, we realized that `neighbourhood` and `location(latitude and longtitude)` could act similarly in affecting the room price, as well as `reviews_per_month` and `number_of_reviews`. `Latitude and longitude` pairs are a more complicated feature than `Neighbourhood`, since it contains two continuous variables that must be combined to carry any meaning. At the moment, we haven't learned how to combine two features into one and implement it in the decision tree. Therefore, at this time, we decide not to use these two features. For `reviews_per_month` and `number_of_reviews`, when we first looked at the data, we believed that `reviews_per_month` is a better feature to use than `number_of_reviews` because it is possible that some listings have more reviews simply due to the fact that they're on airbnb longer than others. However, when we took a deep look, we found out that there are more than 2000 missing values in the `reviews_per_month`, therefore, we decided to use `number_of_reviews` instead. We also cleared out some outliers in `minimum_nights`.
   
-## Data Visulazation
+## Data Visualization
 
 In this section, we are going to explore if each feature affects the price by visualizing it. 
 
@@ -66,14 +66,14 @@ The first one we are going to look at is the relationship between number of revi
 ![Figure 1: Price vs Number of Reviews](../results/exploratory-amsterdam_price-reviews.png)
 Figure 1: Relationship between the Number of Reviews per Listing and Price.
 
-Intuitively, we would think that a higher number of (positive) reviews would make the listing more reliable, therefore allowing the host to charge a higher price for that. That's not what we see, though. From the graph above, there is no clear positive trend between price and number of reviews. There can still be a combined effect with other features, but are not sure if it is a strong predictor yet.
+Based on our experience, AirBnb reviews are unbalanced toward positive appraisals. Negative reviews are actually not that common, maybe because after a few negative reviews, no one else will rent that place. Therefore, we would think that a higher number of reviews would make the listing more reliable, allowing the host to charge a higher price for that. That's not what we see, though. From the graph above, there is no clear positive trend between price and number of reviews. There can still be a combined effect with other features, but are not sure if it is a strong predictor yet.
   
 The second one we are going to look at is the relationship between minimum nights the host requires for a listing and its price.
   
 ![Figure 2: Price vs Minimum number of nights](../results/exploratory-amsterdam_price-minNights.png)
 Figure 2: Relationship between Minimum number of nights host requires and price.
 
-  From this graph, we cannot rule out the possibility that the price goes down if the minimum number of nights increase, which would make sense in a "bulk sale" perspective. On the other hand, we cannot say that there is a clear relationship either. Therefore, from this graph, we cannot be sure that minimum number of nights is a predictor of the price. 
+  From this graph alone, even though there seems to be an upward trend, we cannot rule out the possibility that the price goes down if the minimum number of nights increase, which would make sense in a "bulk sale" perspective. Maybe this is true only within certain clusters of home/room types, and could be captured by an interaction term. On the other hand, we cannot say that there is a clear relationship either. Therefore, from this graph, we cannot be sure whether the minimum number of nights is a predictor of the price. 
 
 The third one we are going to look at is the relationship between the room type of a listing and its price. 
 

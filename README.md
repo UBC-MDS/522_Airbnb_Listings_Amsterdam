@@ -8,7 +8,7 @@ TL;DR: Here is our [final report](doc/main_report.md).
 
 ## Team
 
-- [Gabriel Francisco Medeiros Bogo](https:/github.com/GabrielBogo)
+- [Gabriel Francisco Medeiros Bogo](https://github.com/GabrielBogo)
 - [Yuwei Liu](https://github.com/liuyuwei169)
 - [Jielin Yu](https://github.com/jielinyu)
 
