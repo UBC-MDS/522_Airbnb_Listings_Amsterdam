@@ -140,15 +140,17 @@ In this graph, we can see there is a clear relationship between the neighbourhoo
 
 The fifth one we are going to look at is the relationship between the number of listings that listing host has and the price of that listing.
 
-![Figure 5: Price vs Number of listings per host](../results/exploratory-amsterdam_price-listingsCount.png) Figure 5: Relationship between the number of listings the host has and the price From the graph, we can see there is no correlation between the number of listings a host has and the price. Although there are more highly priced listings when the number of listings a host has is small, that is probably because there are more listings that have the host having low number of listings.
+![Figure 5: Price vs Number of listings per host](../results/exploratory-amsterdam_price-listingsCount.png) Figure 5: Relationship between the number of listings the host has and the price
+
+From the graph, we can see there is no strong correlation between the number of listings a host has and the price. Although there are more highly priced listings when the number of listings a host has is small, that is probably because there are more listings that have the host having low number of listings.
 
 The last one we are going to look at is the relationship between the number of availability per 365 days of a listing and the its price.
 
 ![Figure 6: Price vs Availability per 365 days](../results/exploratory-amsterdam_price-availability.png) Figure 6: Relationship between the number of availability per 365 days and the price
 
-From the graph, we can see that there is no correlation between the availability per 365 days and the price, which makes sense because usually number of availability is not related to price in real life.
+From the graph, we can see that there is no strong correlation between the availability per 365 days and the price, which makes sense because usually number of availability is not related to price in real life.
 
-After the exploration, as a result, we expect `Neighborhood` and `room type` to be the strongest predictors of price, although we will not be testing the former. We are not sure about rest of the features and their possible combined effects.
+After the exploration, as a result, we found out the slope of every blue line is not high, so most features don't show a strong correlation with the price. we expect `Neighborhood` and `room type` to be the strongest predictors of price, although we will not be testing the former. We are not sure about rest of the features and their possible combined effects.
 
 Decision Tree
 -------------
