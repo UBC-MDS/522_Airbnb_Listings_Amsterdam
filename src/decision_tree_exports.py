@@ -32,7 +32,7 @@ parser.add_argument('output_path', help='Output file to dump the finalized model
 args = parser.parse_args()
 
 
-def save_and_show_decision_tree(model,class_names = ['low', 'median', 'high'],save_file_prefix = args.output_path + "Tree_graph", **kwargs):
+def save_and_show_decision_tree(model,class_names = ['low', 'median', 'high'],save_file_prefix = args.output_path + "tree_graph", **kwargs):
     """
     Saves the decision tree model as a pdf
     """
