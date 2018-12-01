@@ -25,23 +25,23 @@ clean_listings <- read_csv(input_path, col_types="iciccddciiiDdiici") %>%
            neighbourhood = fct_reorder(neighbourhood, price, .desc=TRUE))
 
 #Scatter plot between price and reviews
-price_reviews <- clean_listings %>% ggplot(aes(x=number_of_reviews, y=price)) +
+price_reviews <- clean_listings %>% ggplot(aes(x=number_of_reviews, y=price_level)) +
     geom_point(alpha=0.4) +
     ggtitle("Exploratory - Price vs Number of Reviews") +
     xlab("Number of Reviews") +
-    ylab("Price (US$)") +
+    ylab("Price Level") +
     scale_x_log10() +
     theme_minimal()
 # price_reviews
 ggsave(paste(output_path, "price-reviews.png", sep="_"), device="png")
 
 #Scatter plot between price and minimum of nights
-price_minNights <- clean_listings %>% ggplot(aes(x=minimum_nights, y=price)) +
+price_minNights <- clean_listings %>% ggplot(aes(x=minimum_nights, y=price_level)) +
     geom_point() +
     scale_x_log10() +
     ggtitle("Exploratory - Price vs Number of Reviews") +
     xlab("Minimum number of nights") +
-    ylab("Price (US$)") +
+    ylab("Price level") +
     theme_minimal()
 
 # price_minNights
@@ -71,11 +71,11 @@ price_neighborhood
 ggsave(paste(output_path, "price-neighborhood.png", sep="_"), device="png")
 
 #Scatterplot of price and calculated_host_listing_counts
-price_listingsCount <- clean_listings %>% ggplot(aes(x=calculated_host_listings_count, y=price)) +
+price_listingsCount <- clean_listings %>% ggplot(aes(x=calculated_host_listings_count, y=price_level)) +
   geom_point() +
   ggtitle("Exploratory - Price vs Number of listings per host") +
   xlab("Number of listings per host") +
-  ylab("Price (US$)") +
+  ylab("Price level") +
   theme_minimal() +
   theme(axis.text.x=element_text(angle=90,hjust=1))
 
@@ -87,7 +87,7 @@ price_availability <- clean_listings %>% ggplot(aes(x=availability_365, y=price)
   geom_point() +
   ggtitle("Exploratory - Price vs Number of days available per year") +
   xlab("Number of number of days available") +
-  ylab("Price (US$)") +
+  ylab("Price(US$)") +
   theme_minimal() +
   theme(axis.text.x=element_text(angle=90,hjust=1))
 

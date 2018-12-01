@@ -27,21 +27,80 @@ knitr::kable(head(data))
 
 From the data, we can see that there are several features inside:
 
--   **id**: Unique identification code for the listing
--   **name**: Descriptive name of the listing
--   **host\_id**: Unique identification code for the host
--   **host\_name**: First name of the host (privacy is respected. The data is open.)
--   **neighbourhood**: A categorical character variable that specifies the name of neighbourhood of the listing
--   **latitude**: A numeric variable that combining the **longitude** to represent the location of the listing
--   **longtitude**A numeric variable that combining the **latitude** to represent the location of the listing
--   **room\_type**: A categorical variable including **Shared Room**, **Private Room** or **Entire Room/Apt**.
--   **price**: The price of the listing.
--   **minimum\_nights**: The minimum number of nights the host requires to book their property.
--   **number\_of\_reviews**: Number of customer reviews regarding the listing.
--   **last\_review**: Date of the last review.
--   **reviews\_per\_month**: Number of customer reviews per month.
--   **calculated\_host\_listings\_count**: Number of listings each host has simultaneously.
--   **availability\_365**: The number of days that the listing is available in a 365 days, which is pre-defined by the host.
+<table>
+<colgroup>
+<col width="25%" />
+<col width="74%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Column name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>id</td>
+<td>Unique identification code for the listing.</td>
+</tr>
+<tr class="even">
+<td>name</td>
+<td>Descriptive name of the listing.</td>
+</tr>
+<tr class="odd">
+<td>host_id</td>
+<td>Unique identification code for the host.</td>
+</tr>
+<tr class="even">
+<td>host_name</td>
+<td>First name of the host (privacy is respected. The data is open.)</td>
+</tr>
+<tr class="odd">
+<td>neighbourhood</td>
+<td>A categorical character variable that specifies the name of neighbourhood of the listing.</td>
+</tr>
+<tr class="even">
+<td>latitude</td>
+<td>A numeric variable that combining the <strong>longitude</strong> to represent the location of the listing.</td>
+</tr>
+<tr class="odd">
+<td>longtitude</td>
+<td>A numeric variable that combining the <strong>latitude</strong> to represent the location of the listing.</td>
+</tr>
+<tr class="even">
+<td>room_type</td>
+<td>A categorical variable including <strong>Shared Room</strong>, <strong>Private Room</strong> or <strong>Entire Room/Apt</strong>.</td>
+</tr>
+<tr class="odd">
+<td>price</td>
+<td>The price of the listing.</td>
+</tr>
+<tr class="even">
+<td>minimum_nights</td>
+<td>The minimum number of nights the host requires to book their property.</td>
+</tr>
+<tr class="odd">
+<td>number_of_reviews</td>
+<td>Number of customer reviews regarding the listing.</td>
+</tr>
+<tr class="even">
+<td>last_review</td>
+<td>Date of the last review.</td>
+</tr>
+<tr class="odd">
+<td>reviews_per_month</td>
+<td>Number of customer reviews per month.</td>
+</tr>
+<tr class="even">
+<td>calculated_host_listings_count</td>
+<td>Number of listings each host has simultaneously.</td>
+</tr>
+<tr class="odd">
+<td>availability_365</td>
+<td>The number of days that the listing is available in a 365 days, which is pre-defined by the host.</td>
+</tr>
+</tbody>
+</table>
 
 After looking at the data, we predict that `neighbourhood`, `location(latitude and longtitude)`, `room_type`, `minimum_nights`, `number_of_reviews`, `reviews_per_month`, `calculated_host_listings_count`, and `availability_365` can possibly be the factors affecting the price. In order to find out the two strongest predictors, after cleaning the data, we are going to perform some exploratory data analysis to tray and have a grasp of these factors visually, then use a decision tree algorithm to find out the two strongest predictors.
 
