@@ -73,7 +73,7 @@ The second one we are going to look at is the relationship between minimum night
 ![Figure 2: Price vs Minimum number of nights](../results/exploratory-amsterdam_price-minNights.png)
 Figure 2: Relationship between Minimum number of nights host requires and price.
 
-  From this graph, we cannot rule out the possibility that the price goes down if the minimum number of nights increase, which would make sense in a "bulk sale" perspective. On the other hand, we cannot say that there is a clear relationship either. Therefore, from this graph, we cannot be sure that minimum number of nights is a predictor of the price. 
+  From this graph alone, even though there seems to be an upward trend, we cannot rule out the possibility that the price goes down if the minimum number of nights increase, which would make sense in a "bulk sale" perspective. Maybe this is true only within certain clusters of home/room types, and could be captured by an interaction term. On the other hand, we cannot say that there is a clear relationship either. Therefore, from this graph, we cannot be sure whether the minimum number of nights is a predictor of the price. 
 
 The third one we are going to look at is the relationship between the room type of a listing and its price. 
 

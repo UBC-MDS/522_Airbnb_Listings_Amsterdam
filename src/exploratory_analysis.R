@@ -36,16 +36,16 @@ price_reviews <- clean_listings %>% ggplot(aes(x=number_of_reviews, y=price)) +
 ggsave(paste(output_path, "price-reviews.png", sep="_"), device="png")
 
 #Scatter plot between price and minimum of nights
-price_minNights <- clean_listings %>% ggplot(aes(x=minimum_nights, y=fct_relevel(price_level, "low", "median", "high"))) +
+price_minNights <- clean_listings %>% ggplot(aes(x=minimum_nights, y=price)) +
     geom_jitter(alpha=0.25) +
+    geom_smooth(method=lm, se=FALSE, color="blue") +
     scale_x_log10() +
-    coord_flip() +
     ggtitle("Exploratory - Price vs Number of Reviews") +
     xlab("Minimum number of nights") +
-    ylab("Price Level") +
+    ylab("Price (US$)") +
     theme_minimal()
 
-# price_minNights
+price_minNights
 ggsave(paste(output_path, "price-minNights.png", sep="_"), device="png")
 
 #Distribution of price per type of listing
