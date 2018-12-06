@@ -100,6 +100,26 @@ To render the report:
 `rmarkdown::render("doc/main_report.Rmd")`  
 Report: [doc/main_report.md](doc/main_report.md)
 
+
+## Usage
+
+### Run without Docker/Make
+
+1. Clone this repository
+
+2. Run the following commands:
+
+```
+# Removes all unnecessary files to start the analysis from scratch
+make clean
+
+# Runs all necessary scripts in order to generate the report
+make all
+```
+
+
+
+
 ## Dependencies
 #### R version 3.5.1
 - tidyverse 1.2.1
