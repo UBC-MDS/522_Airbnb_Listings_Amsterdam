@@ -110,11 +110,11 @@ Report: [doc/main_report.md](doc/main_report.md)
 2. Run the following commands:
 
 
-# Removes all unnecessary files to start the analysis from scratch:
+#### Removes all unnecessary files to start the analysis from scratch:
 ```
 make clean
 ```
-# Runs all necessary scripts in order to generate the report:
+#### Runs all necessary scripts in order to generate the report:
 ```
 make all
 ```
