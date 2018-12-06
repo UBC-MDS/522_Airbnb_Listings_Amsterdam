@@ -53,10 +53,6 @@ clean_listings %>% group_by(price_level) %>% summarise(min_night_mean=mean(minim
 #price_minNights
 ggsave(paste(output_path, "price-minNights.png", sep="_"), device="png")
 
-
-
-
-
 #3) Use Heatmap to find relationship between room type and price level
 clean_listings %>% ggplot()+
   geom_bin2d(aes(x=room_type,y=price_level)) + 
@@ -78,7 +74,40 @@ price_listingsCount <- clean_listings %>% ggplot(aes(x=price_level, y=calculated
     theme_classic()+
     ggtitle("Exploratory - Number of listings per host vs Price") +
     xlab("Price level") +
-    ylab("Number of listings per host")
+
+#Distribution of price per type of listing
+price_roomType <- clean_listings %>% ggplot(aes(x=room_type, y=price)) +
+    geom_boxplot() +
+    ggtitle("Exploratory - Price vs Room Type") +
+    xlab("Room Type") +
+    ylab("Price (US$)") +
+    theme_minimal()
+
+# price_roomType
+ggsave(here("results/exploratory_price_roomType.png"), device="png")
+
+#Boxplot of price per neighborhood
+price_neighborhood <- clean_listings %>% ggplot(aes(x=neighbourhood, y=price)) +
+  geom_boxplot() +
+  ggtitle("Exploratory - Price vs Neighborhood") +
+  xlab("Neighborhood") +
+  ylab("Price (US$)") +
+  theme_minimal() +
+  theme(axis.text.x=element_text(angle=90,hjust=1))
+
+# price_neighborhood
+ggsave(paste(output_path, "price-neighborhood.png", sep="_"), device="png")
+
+#Scatterplot of price and calculated_host_listing_counts
+price_listingsCount <- clean_listings %>% ggplot(aes(x=calculated_host_listings_count, y=price)) +
+  geom_point(alpha=0.25) +
+  scale_x_log10() +
+  geom_smooth(method=lm, color="blue") +
+  ggtitle("Exploratory - Price vs Number of listings per host") +
+  xlab("Number of listings per host") +
+  ylab("Price (US$)") +
+  theme_minimal() +
+  theme(axis.text.x=element_text(angle=90,hjust=1))
 
 # price_listingsCount
 ggsave(paste(output_path, "price-listingsCount.png", sep="_"), device="png")
