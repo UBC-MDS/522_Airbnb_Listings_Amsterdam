@@ -109,11 +109,13 @@ Report: [doc/main_report.md](doc/main_report.md)
 
 2. Run the following commands:
 
-```
-# Removes all unnecessary files to start the analysis from scratch
-make clean
 
-# Runs all necessary scripts in order to generate the report
+# Removes all unnecessary files to start the analysis from scratch:
+```
+make clean
+```
+# Runs all necessary scripts in order to generate the report:
+```
 make all
 ```
 
@@ -122,7 +124,7 @@ make all
 1. Install [Docker](https://www.docker.com/get-started)
 2. Download and clone this repository
 3. Use the command line to navigate to the root of this repo
-4. type the following (filling in <Absolute Path of Repo on Your Computer> with the absolute path to the root of this project on your computer):
+4. type the following (filling in /<Absolute Path of Repo on Your Computer/> with the absolute path to the root of this project on your computer):
 
 ```
 docker run --rm -e PASSWORD=test -v <Absolute Path of Repo on Your Computer>:/home/rstudio/final_report <DOCKERHUB REPO NAME, eg: ads0713132/522_airbnb_listings_amsterdam> make -C '/home/rstudio/final_report' all
