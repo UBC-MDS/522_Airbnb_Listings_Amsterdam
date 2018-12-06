@@ -103,14 +103,14 @@ Report: [doc/main_report.md](doc/main_report.md)
 
 ## Usage
 
-### Run without Docker/Make
+### Run without Docker(Make)
 
 1. Clone this repository
 
 2. Run the following commands:
 
 
-#### Removes all unnecessary files to start the analysis from scratch:
+#### Removes all unnecessary files and start the project from scratch:
 ```
 make clean
 ```
@@ -121,10 +121,10 @@ make all
 
 ### Run with Docker
 
-1. Install [Docker](https://www.docker.com/get-started)
-2. Download and clone this repository
-3. Use the command line to navigate to the root of this repo
-4. type the following (filling in /<Absolute Path of Repo on Your Computer/> with the absolute path to the root of this project on your computer):
+- Install [Docker](https://www.docker.com/get-started)
+- Download and clone this repository
+- Use the command line to navigate to the root of this repo
+- type the following (filling in /<Absolute Path of Repo on Your Computer/> with the absolute path to the root of this project on your computer):
 
 ```
 docker run --rm -e PASSWORD=test -v <Absolute Path of Repo on Your Computer>:/home/rstudio/final_report <DOCKERHUB REPO NAME, eg: ads0713132/522_airbnb_listings_amsterdam> make -C '/home/rstudio/final_report' all
