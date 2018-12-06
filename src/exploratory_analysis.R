@@ -57,7 +57,7 @@ price_roomType <- clean_listings %>% ggplot(aes(x=room_type, y=price)) +
     theme_minimal()
 
 # price_roomType
-# ggsave(here("results/exploratory_price_roomType.png"), device="png")
+ggsave(here("results/exploratory_price_roomType.png"), device="png")
 
 #Boxplot of price per neighborhood
 price_neighborhood <- clean_listings %>% ggplot(aes(x=neighbourhood, y=price)) +
