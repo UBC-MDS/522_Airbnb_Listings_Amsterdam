@@ -13,11 +13,6 @@
 #Use rocker/tidyverse as the base image
 FROM rocker/tidyverse
 
-#Install the cowsay package
-RUN apt-get update -qq && apt-get -y --no-install-recommends install \
-  && install2.r --error \
-    --deps TRUE \
-    cowsay
 
 #Install R package
 RUN Rscript -e "install.packages('here')"
@@ -40,7 +35,7 @@ RUN apt-get install -y python3-tk
 RUN pip3 install numpy
 RUN pip3 install pandas
 RUN pip3 install scikit-learn
-RUN pip3 install pickle
+#RUN pip3 install pickle
 RUN pip3 install seaborn
 RUN apt-get install -y graphviz && pip install graphviz
 RUN apt-get update && \
