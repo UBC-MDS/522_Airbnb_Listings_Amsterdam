@@ -30,6 +30,7 @@ RUN apt-get install -y python3-tk
 RUN pip3 install numpy
 RUN pip3 install pandas
 RUN pip3 install scikit-learn
+RUN pip3 install seaborn
 RUN apt-get install -y graphviz && pip install graphviz
 RUN apt-get update && \
     pip3 install matplotlib && \
