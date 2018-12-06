@@ -2,8 +2,8 @@
 # exploratory_analysis.R
 
 
-# Gabriel Bogo
-# Nov 22 2018
+# Gabriel Bogo, Yuwei Liu, Jielin Yu
+# December 4 2018
 
 # Purpose: generate exploratory figures to provide insights for statistical modeling.
 
@@ -17,36 +17,63 @@ args <- commandArgs(trailingOnly = TRUE)
 input_path <- args[1]
 output_path <- here("results", paste("exploratory", args[2], sep="-"))
 
+
 # input_path <- "data/amsterdam_clean_listings.csv"
 #Read data
 clean_listings <- read_csv(input_path, col_types="iciccddciiiDdiici") %>%
     mutate(neighbourhood = as_factor(neighbourhood),
-           neighbourhood = fct_reorder(neighbourhood, price, .desc=TRUE))
+           neighbourhood = fct_reorder(neighbourhood, price, .desc=TRUE))%>%
+    mutate(price_level= price_level%>%fct_relevel("low", "median", "high"))
 
-#Scatter plot between price and reviews
-price_reviews <- clean_listings %>% ggplot(aes(x=number_of_reviews, y=price)) +
-    geom_point(alpha=0.25) +
-    geom_smooth(method=lm, se=FALSE, color="blue") +
-    ggtitle("Exploratory - Price vs Number of Reviews") +
-    xlab("Number of Reviews") +
-    ylab("Price (US$)") +
-    scale_x_log10() +
-    theme_minimal()
+
+
+#1)price and reviews
+price_reviews <- clean_listings %>% ggplot(aes(x=price_level, y=number_of_reviews)) +
+  geom_bar(width=0.9, fill="#FF6666",stat="identity") +
+  coord_flip()+
+  scale_colour_brewer(palette="Spectral") +
+  theme_classic()+
+  ggtitle("Exploratory - Number of Reviews vs Price") +
+  xlab("Price level") +
+  ylab("Number of Reviews") 
+
 # price_reviews
 ggsave(paste(output_path, "price-reviews.png", sep="_"), device="png")
 
-#Scatter plot between price and minimum of nights
-price_minNights <- clean_listings %>% ggplot(aes(x=minimum_nights, y=price)) +
-    geom_jitter(alpha=0.25) +
-    geom_smooth(method=lm, se=FALSE, color="blue") +
-    scale_x_log10() +
-    ggtitle("Exploratory - Price vs Number of Reviews") +
-    xlab("Minimum number of nights") +
-    ylab("Price (US$)") +
-    theme_minimal()
 
-price_minNights
+
+
+#2)minimum nights VS price level
+clean_listings %>% group_by(price_level) %>% summarise(min_night_mean=mean(minimum_nights)) %>% 
+  ggplot(aes(y=price_level,x=min_night_mean))+
+  geom_point()+ggtitle("Price VS minimum_nights")+
+  xlab("Minimum Nights") +
+  ylab("Price level") 
+
+#price_minNights
 ggsave(paste(output_path, "price-minNights.png", sep="_"), device="png")
+
+#3) Use Heatmap to find relationship between room type and price level
+clean_listings %>% ggplot()+
+  geom_bin2d(aes(x=room_type,y=price_level)) + 
+  ggtitle("Price VS room type")+
+  xlab("Room Type") +
+  ylab("Price level") 
+
+#price_roomType
+ggsave(here("results/exploratory_price_roomType.png"), device="png")
+
+
+
+
+#4)price and calculated_host_listing_counts
+price_listingsCount <- clean_listings %>% ggplot(aes(x=price_level, y=calculated_host_listings_count)) +
+    geom_bar(width=0.9, fill="#FF6666",stat="identity") +
+    coord_flip()+
+    scale_colour_brewer(palette="Spectral") +
+    theme_classic()+
+    ggtitle("Exploratory - Number of listings per host vs Price") +
+    xlab("Price level") +
 
 #Distribution of price per type of listing
 price_roomType <- clean_listings %>% ggplot(aes(x=room_type, y=price)) +
@@ -85,26 +112,18 @@ price_listingsCount <- clean_listings %>% ggplot(aes(x=calculated_host_listings_
 # price_listingsCount
 ggsave(paste(output_path, "price-listingsCount.png", sep="_"), device="png")
 
-#Scatterplot of price and availability_365
-price_availability <- clean_listings %>% ggplot(aes(x=availability_365, y=price)) +
-  geom_point(alpha=0.25) +
-  geom_smooth(method=lm, color="blue") +
-  ggtitle("Exploratory - Price vs Number of days available per year") +
-  xlab("Number of number of days available") +
-  ylab("Price (US$)") +
-  theme_minimal() +
-  theme(axis.text.x=element_text(angle=90,hjust=1))
+
+
+
+#5)price and availability_365
+price_availability <- clean_listings %>% ggplot(aes(x=price_level, y=availability_365)) +
+  geom_bar(width=0.9, fill="#FF6666",stat="identity") +
+  coord_flip()+
+  scale_colour_brewer(palette="Spectral") +
+  theme_classic()+
+  ggtitle("Exploratory - Number of days available per year vs Price") +
+  ylab("Number of number of days available") +
+  xlab("Price level") 
 
 # price_availability
 ggsave(paste(output_path, "price-availability.png", sep="_"), device="png")
-
-#Map of price (FOR THE FUTURE)
-# bbox = make_bbox(clean_listings$longitude, clean_listings$latitude)
-#
-# amsterdam_map <- ggmap::get_stamenmap(bbox, maptype = "toner-lite", zoom = 11) %>%
-#   ggmap::ggmap()
-#
-# amsterdam_map +
-#   geom_tile(
-#     aes(x = longitude, y = latitude, fill = price),
-#     size = 2, data = clean_listings)

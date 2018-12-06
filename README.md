@@ -100,6 +100,43 @@ To render the report:
 `rmarkdown::render("doc/main_report.Rmd")`  
 Report: [doc/main_report.md](doc/main_report.md)
 
+
+## Usage
+
+### Run without Docker(Make)
+
+1. Clone this repository
+
+2. Run the following commands:
+
+
+#### Removes all unnecessary files and start the project from scratch:
+```
+make clean
+```
+#### Runs all necessary scripts in order to generate the report:
+```
+make all
+```
+
+### Run with Docker
+
+- Install [Docker](https://www.docker.com/get-started)
+- Download and clone this repository
+- Use the command line to navigate to the root of this repo
+- type the following (filling in /<Absolute Path of Repo on Your Computer/> with the absolute path to the root of this project on your computer):
+
+```
+docker run --rm -e PASSWORD=test -v <Absolute Path of Repo on Your Computer>:/home/rstudio/final_report <DOCKERHUB REPO NAME, eg: ads0713132/522_airbnb_listings_amsterdam> make -C '/home/rstudio/final_report' all
+```
+
+5. To clean up the analysis type:, use the following:
+
+```
+docker run --rm -e PASSWORD=test -v <Absolute Path of Repo on Your Computer>:/home/rstudio/final_report <DOCKERHUB REPO NAME, eg: ads0713132/522_airbnb_listings_amsterdam> make -C '/home/rstudio/final_report' clean
+```
+
+
 ## Dependencies
 #### R version 3.5.1
 - tidyverse 1.2.1
