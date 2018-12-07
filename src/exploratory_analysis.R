@@ -38,10 +38,10 @@ ylims_reviews <- clean_listings %>%
   geom_jitter(alpha=0.3) +
   scale_colour_brewer(palette="Spectral") +
   theme_classic()+
-  ggtitle("Exploratory - Price vs Number of Reviews") +
   xlab("Number of reviews") +
   ylab("Price level") +
-  coord_cartesian(xlim = as.numeric(ylims_reviews)*1.05))
+  coord_cartesian(xlim = as.numeric(ylims_reviews)*1.05)) +
+  ggtitle("Exploratory - Price vs Number of Reviews")
 
 ggsave(paste(output_path, "price-reviews.png", sep="_"), device="png")
 
@@ -56,10 +56,10 @@ ylims_minNights <- clean_listings %>%
 (price_minNights <- clean_listings %>% 
     ggplot(aes(y=price_level,x=minimum_nights))+
     geom_jitter(alpha=0.3)+
-    ggtitle("Price vs Minimum Nights")+
     xlab("Minimum Nights") +
     ylab("Price level") +
-    coord_cartesian(xlim = as.numeric(ylims_minNights)*1.05))
+    coord_cartesian(xlim = as.numeric(ylims_minNights)*1.05)) +
+    ggtitle("Price vs Minimum Nights")
 
 ggsave(paste(output_path, "price-minNights.png", sep="_"), device="png")
 
@@ -76,20 +76,20 @@ ylims_listingsCount <- clean_listings %>%
     geom_violin() +
     scale_colour_brewer(palette="Spectral") +
     theme_classic()+
-    ggtitle("Exploratory - Price vs Number of listings per host") +
     xlab("Number of listings per host") +
     ylab("Price level") +
-    coord_cartesian(xlim = as.numeric(ylims_listingsCount)*1.05))
+    coord_cartesian(xlim = as.numeric(ylims_listingsCount)*1.05)) +
+    ggtitle("Exploratory - Price vs Number of listings per host") +
 
 ggsave(paste(output_path, "price-listingsCount.png", sep="_"), device="png")
 
 #4) Distribution of price per type of listing
 (price_roomType <- clean_listings %>% ggplot(aes(x=room_type, y=price)) +
     geom_boxplot() +
-    ggtitle("Exploratory - Room Type vs Price") +
     xlab("Room Type") +
     ylab("Price (US$)") +
-    theme_minimal())
+    theme_minimal()) +
+    ggtitle("Exploratory - Room Type vs Price") +
 
 ggsave(paste(output_path, "price-roomType.png", sep="_"), device="png")
 
@@ -98,9 +98,9 @@ ggsave(paste(output_path, "price-roomType.png", sep="_"), device="png")
     geom_jitter(alpha=0.4)+
     scale_colour_brewer(palette="Spectral") +
     theme_classic()+
-    ggtitle("Exploratory - Price vs Number of days available per year") +
     ylab("Price level") +
-    xlab("Number of days available per year"))
+    xlab("Number of days available per year")) +
+    ggtitle("Exploratory - Price vs Number of days available per year")
 
 ggsave(paste(output_path, "price-availability.png", sep="_"), device="png")
 
@@ -132,7 +132,6 @@ threshold_2 <- quantile(clean_listings$price, 2/3)
 ggsave(paste(output_path, "price-histogram.png", sep="_"), device="png")
 
 #Grid of figures
-(plot_grid <- grid.arrange(price_reviews, price_minNights, price_listingsCount,
+(plot_grid <- arrangeGrob(price_reviews, price_minNights, price_listingsCount,
              price_roomType, price_availability,ncol=2, nrow=3))
-
-ggsave(paste(output_path, "plot-grid.png", sep="_"), device="png")
+ggsave(paste(output_path, "plot-grid.png", sep="_"), plot=plot_grid, device="png")
