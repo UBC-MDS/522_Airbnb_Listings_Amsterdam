@@ -1,6 +1,6 @@
 ,Feature,Importance
-4,room_type_num,0.6135298875325957
-3,availability_365,0.26066802678334544
-2,calculated_host_listings_count,0.08220558187548818
-1,number_of_reviews,0.03382378088073282
-0,minimum_nights,0.00977272292783766
+4,room_type_num,0.6274668269591972
+3,availability_365,0.24569054448905314
+2,calculated_host_listings_count,0.09046229387937553
+1,number_of_reviews,0.029895871552346465
+0,minimum_nights,0.0064844631200277865
