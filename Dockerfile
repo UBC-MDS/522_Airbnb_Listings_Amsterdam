@@ -15,6 +15,7 @@ FROM rocker/tidyverse
 
 #Install R package
 RUN Rscript -e "install.packages('here')"
+RUN Rscript -e "install.packages('gridExtra')"
 
 #Install python 3
 RUN apt-get update \

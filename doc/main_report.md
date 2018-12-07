@@ -128,7 +128,7 @@ From this graph , listings of median price level are having more required minimu
 
 The third one we are going to look at is the relationship between the room type of a listing and its price.
 
-![Figure 3: Price vs Room Type](../results/exploratory_price_roomType.png) Figure 3: Comparision of the maximum, minimum, 25% percentile, median, and 75% percentile of prices for different room types.
+![Figure 3: Price vs Room Type](../results/exploratory-amsterdam_price-roomType.png) Figure 3: Comparision of the maximum, minimum, 25% percentile, median, and 75% percentile of prices for different room types.
 
 From this graph, we can see the counts of shared room are always high regardless of the price level. When we look at private room, there are more listings of high level price than other price. However, for the entire home/apt, low price level has most counts. From the graph, it is hard to see some corelation between the room type and the price.
 

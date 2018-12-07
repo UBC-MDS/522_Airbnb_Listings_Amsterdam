@@ -141,6 +141,7 @@ docker run --rm -e PASSWORD=test -v <Absolute Path of Repo on Your Computer>:/ho
 #### R version 3.5.1
 - tidyverse 1.2.1
 - here 0.1
+- gridExtra 2.3
 
 #### Python 3.6.5
 - pandas==0.23.0
