@@ -42,10 +42,26 @@ Summary information and metrics for AirBnb listings in Amsterdam. The data varia
 - Type of Question: **Predictive**
 
 
-## Analysis Workflow
 
-Our goal is to determine which of the features at hand have the highest
-dependence with the data. To achieve that, we follow the steps below:
+## Usage
+
+### Run without Docker(Make)
+
+1. Clone this repository: [Airbnb_Listings_Amsterdam](https://github.com/UBC-MDS/522_Airbnb_Listings_Amsterdam)
+
+2. Install all dependencies shown in Dependencies section
+
+3. Use the command line to navigate to the root of this project directory
+
+#### Runs all necessary scripts in order to generate the report:
+```
+make all
+```
+#### Removes all unnecessary files and start the project from scratch:
+```
+make cleans
+```
+The `Makefile` will run the following scripts:
 
 #### Step 1. Data wrangling:
 
@@ -59,6 +75,7 @@ Script: [src/clean_data.R](src/clean_data.R)
 Usage (all commands should be run from the root directory):  
 `Rscript src/clean_data.R data/amsterdam_listings.csv data/amsterdam_clean_listings.csv`
 
+
 #### Step 2. Exploratory Data Analysis
 
 - Generate scatter plots to assess the relationship of multiple features and
@@ -67,6 +84,7 @@ the response variable
 Script: [src/exploratory_analysis.R](src/exploratory_analysis.R)  
 Usage:
 `Rscript src/exploratory_analysis.R data/amsterdam_clean_listings.csv amsterdam`
+
 
 #### Step 3. Decision Tree classification:
 
@@ -85,6 +103,7 @@ Script: [src/decision_tree_model.py](src/decision_tree_model.py)
 Usage:
 `python src/decision_tree_model.py data/amsterdam_clean_listings.csv results/`
 
+
 #### Step 4. Draw the Decision Tree
 
 - Load the binary file of the Decision Tree
@@ -101,41 +120,29 @@ To render the report:
 Report: [doc/main_report.md](doc/main_report.md)
 
 
-## Usage
-
-### Run without Docker(Make)
-
-1. Clone this repository
-
-2. Run the following commands:
-
-
-#### Removes all unnecessary files and start the project from scratch:
-```
-make clean
-```
-#### Runs all necessary scripts in order to generate the report:
-```
-make all
-```
-
 ### Run with Docker
 
 - Install [Docker](https://www.docker.com/get-started)
-- Download and clone this repository
+- Download or clone this repository [Airbnb_Listings_Amsterdam](https://github.com/UBC-MDS/522_Airbnb_Listings_Amsterdam)
+- Run the following code in terminal to download the Docker image:
+```
+docker pull jielinyu/522_airbnb_listings_amsterdam
+```
 - Use the command line to navigate to the root of this repo
 - type the following (filling in /<Absolute Path of Repo on Your Computer/> with the absolute path to the root of this project on your computer):
 
 ```
-docker run --rm -e PASSWORD=test -v <Absolute Path of Repo on Your Computer>:/home/rstudio/final_report <DOCKERHUB REPO NAME, eg: ads0713132/522_airbnb_listings_amsterdam> make -C '/home/rstudio/final_report' all
+docker run --rm -e PASSWORD=test -v <YOUR-PATH-TO-PROJECT-DIRECTORY>:/home/rstudio/final_report final_report:0.1 make -C '/home/rstudio/final_report' all
 ```
 
 5. To clean up the analysis type:, use the following:
 
 ```
-docker run --rm -e PASSWORD=test -v <Absolute Path of Repo on Your Computer>:/home/rstudio/final_report <DOCKERHUB REPO NAME, eg: ads0713132/522_airbnb_listings_amsterdam> make -C '/home/rstudio/final_report' clean
+docker run --rm -e PASSWORD=test -v <YOUR-PATH-TO-PROJECT-DIRECTORY>:/home/rstudio/final_report final_report:0.1 make -C '/home/rstudio/final_report' clean
 ```
 
+### Dependency Diagram of the Makefile 
+![](results/out.png)
 
 ## Dependencies
 #### R version 3.5.1
@@ -149,3 +156,4 @@ docker run --rm -e PASSWORD=test -v <Absolute Path of Repo on Your Computer>:/ho
 - scikit-learn==0.19.1
 - matplotlib==2.2.2
 - graphviz==0.8.4
+- pickle==4.0
