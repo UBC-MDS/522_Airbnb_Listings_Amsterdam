@@ -9,7 +9,7 @@
 
 # Run all targets
 .PHONY: all
-all : doc/main_report.md
+all : doc/main_report.md out.png
 
 # Step 1 - clean data
 data/amsterdam_clean_listings.csv: data/amsterdam_listings.csv src/clean_data.R
@@ -38,9 +38,18 @@ doc/main_report.md: doc/main_report.Rmd \
 										results/tree_graph.png
 		Rscript -e "rmarkdown::render('./doc/main_report.Rmd','github_document')"
 
+# step 6 - Create dependence diagram
+out.png: Makefile
+		make -Bnd | make2graph > output.dot
+		make -Bnd | make2graph | dot -Tpng -o out.png
+		make -Bnd | make2graph --format x > output.xml
+
 # Remove all files
 .PHONY : clean
 clean :
 		rm -f data/amsterdam_clean_listings.csv
 		rm -f results/*
 		rm -f doc/main_report.md doc/main_report.html
+		rm -f output.dot
+		rm -f out.png
+		rm -f output.xml
