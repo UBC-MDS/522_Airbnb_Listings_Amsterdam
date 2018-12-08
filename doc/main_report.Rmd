@@ -107,7 +107,7 @@ Figure 5: Relationship between the number of availability per 365 days and the p
 
   From the graph, it is hard to observe anything or see any correlation, apart from low level priced listings have less counts when number of availability per 365 days is 100. We are not sure if it is a strong predictor or not.
 
-
+<img src="../results/exploratory-amsterdam_plot-grid.png" width="550"/>
 Figure 6: Summary of all graphs
 
   After the exploration, as a result, we found out usually there are always a weak or a uninteraptable relationship between the price and the feature. It seems that `Room Type`could possibly be one of the two strongest predictors (although the graph shows that none of the features is really a "strong" predictor.) We are not sure about rest of the features at all.
