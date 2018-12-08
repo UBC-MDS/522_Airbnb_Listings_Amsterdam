@@ -120,15 +120,16 @@ In this section, we are going to explore if each feature affects the price by vi
 
 The first one we are going to look at is the relationship between number of reviews of a listing and its price.
 
-<img src="../results/exploratory-amsterdam_price-reviews.png" width="550"/> Figure 1: Relationship between the Number of Reviews per Listing and Price level.
+<img src="../results/exploratory-amsterdam_price-reviews.png" width="550"/>
 
-Based on our experience, AirBnb reviews are unbalanced toward positive appraisals. Negative reviews are actually not that common, maybe because after a few negative reviews, no one else will rent that place. Therefore, we would think that a higher number of reviews would make the listing more reliable, allowing the host to charge a higher price for that. However, lower priced places can had more guests in the past, so they may have higher reviews either.
+Figure 1: Relationship between the Number of Reviews per Listing and Price level.
 
-From the graph above, we cannot see a strong correlation between price and number of reviews. HTherefore, it can be predictor of the price, but we are not sure if it will be one.
+Based on our experience, AirBnb reviews are unbalanced toward positive appraisals. Negative reviews are actually not that common, maybe because after a few negative reviews, no one else will rent that place. Therefore, we would think that a higher number of reviews would make the listing more reliable, allowing the host to charge a higher price for that. However, lower priced places can had more guests in the past, so they may have higher reviews either. From the graph above, we cannot see a strong correlation between price and number of reviews. HTherefore, it can be predictor of the price, but we are not sure if it will be one.
 
 The second one we are going to look at is the relationship between minimum nights the host requires for a listing and its price.
 
 <img src="../results/exploratory-amsterdam_price-minNights.png" width="550"/>
+
 Figure 2: Relationship between Minimum number of nights host requires and price level.
 
 From this graph , listings of median price level and high price level are having more required minimum nights as 3 than the low, and the listings of low price level have more minimum nights as 1, but other than that, it is hard to observe anything. Therefore, from this graph, we cannot be sure whether the minimum number of nights is a predictor of the price.
@@ -136,6 +137,7 @@ From this graph , listings of median price level and high price level are having
 The third one we are going to look at is the relationship between the room type of a listing and its price.
 
 <img src="../results/exploratory-amsterdam_price-roomType.png" width="550"/>
+
 Figure 3: Comparision of the maximum, minimum, 25% percentile, median, and 75% percentile of prices for different room types.
 
 From this graph, we can see that the avergage price of entire home/apt is higher than the other two. Therefore, it is possible that room type can be a predictor, or even a strong predictor of the price.
@@ -143,6 +145,7 @@ From this graph, we can see that the avergage price of entire home/apt is higher
 The fourth one we are going to look at is the relationship between the number of listings that listing host has and the price of that listing.
 
 <img src="../results/exploratory-amsterdam_price-listingsCount.png" width="550"/>
+
 Figure 4: Relationship between the number of listings the host has and the price
 
 From the graph, we can barely see any correlation. Although there are more low priced listings when the number of listings a host has is 2, we are not sure about the correlation at all.
@@ -150,11 +153,14 @@ From the graph, we can barely see any correlation. Although there are more low p
 The last one we are going to look at is the relationship between the number of availability per 365 days of a listing and the its price.
 
 <img src="../results/exploratory-amsterdam_price-availability.png" width="550"/>
+
 Figure 5: Relationship between the number of availability per 365 days and the price
 
 From the graph, it is hard to observe anything or see any correlation, apart from low level priced listings have less counts when number of availability per 365 days is 100. We are not sure if it is a strong predictor or not.
 
-<img src="../results/exploratory-amsterdam_plot-grid.png" width="550"/> Figure 6: Summary of all graphs
+<img src="../results/exploratory-amsterdam_plot-grid.png" width="550"/>
+
+Figure 6: Summary of all graphs
 
 After the exploration, as a result, we found out usually there are always a weak or a uninteraptable relationship between the price and the feature. It seems that `Room Type`could possibly be one of the two strongest predictors (although the graph shows that none of the features is really a "strong" predictor.) We are not sure about rest of the features at all.
 
