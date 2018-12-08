@@ -4,7 +4,7 @@ What are the factors that can best predict the prices of an AirBnb listing in Am
 
 We believe that AirBnb data represents an excellent online proxy of the local housing market and may generate insights to other industries such as real state and construction.
 
-TL;DR: Here is our [final report](doc/main_report.md).
+Here is our [final report](doc/main_report.md).
 
 ## Team
 
@@ -124,16 +124,16 @@ make all
 - Install [Docker](https://www.docker.com/get-started)
 - Download and clone this repository
 - Use the command line to navigate to the root of this repo
-- type the following (filling in /<Absolute Path of Repo on Your Computer/> with the absolute path to the root of this project on your computer):
+- type the following(`pwd` is the absolute path in your computer. If it doesn't work, please type it manually):
 
 ```
-docker run --rm -e PASSWORD=test -v <Absolute Path of Repo on Your Computer>:/home/rstudio/final_report <DOCKERHUB REPO NAME, eg: ads0713132/522_airbnb_listings_amsterdam> make -C '/home/rstudio/final_report' all
+docker run --rm -e PASSWORD=test -v `pwd`:/home/rstudio/final_report <DOCKERHUB REPO NAME, eg: ads0713132/522_airbnb_listings_amsterdam> make -C '/home/rstudio/final_report' all
 ```
 
 5. To clean up the analysis type:, use the following:
 
 ```
-docker run --rm -e PASSWORD=test -v <Absolute Path of Repo on Your Computer>:/home/rstudio/final_report <DOCKERHUB REPO NAME, eg: ads0713132/522_airbnb_listings_amsterdam> make -C '/home/rstudio/final_report' clean
+docker run --rm -e PASSWORD=test -v `pwd`:/home/rstudio/final_report <DOCKERHUB REPO NAME, eg: ads0713132/522_airbnb_listings_amsterdam> make -C '/home/rstudio/final_report' clean
 ```
 
 
