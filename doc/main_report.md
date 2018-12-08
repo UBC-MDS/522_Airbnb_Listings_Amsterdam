@@ -196,7 +196,7 @@ Overall, from the data visualzation, we expected `room_type` to be one of the tw
 
 We do know this analysis has limitations. For example, we found out that `neighborhood` could be a strong predictor on pricing, however, due to the complexity of this categorical feature, we decided not to use it. Also, as mentioned before, we used `number of reviews` instead or `reviews per month`, which means that some listings could simply have more reviews because they are on Airbnb for a longer time.
 
-For future work on this matter, we expect to explore the geographical attributes of the listings such as neighborhoods and/or distance from downtown to investigate whether or not they can uncover stronger relationships with the price of property.
+For future work on this matter, we expect to explore the geographical attributes of the listings such as neighborhoods and/or distance from downtown to investigate whether or not they can uncover stronger relationships with the price of the property.
 
 References
 ----------

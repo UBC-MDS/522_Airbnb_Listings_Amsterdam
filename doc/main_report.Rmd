@@ -146,7 +146,7 @@ Figure 8: The decision tree we made for analyzing the strong predictors of the p
 
   We do know this analysis has limitations. For example, we found out that `neighborhood` could be a strong predictor on pricing, however, due to the complexity of this categorical feature, we decided not to use it. Also, as mentioned before, we used `number of reviews` instead or `reviews per month`, which means that some listings could simply have more reviews because they are on Airbnb for a longer time. 
 
-  For future work on this matter, we expect to explore the geographical attributes of the listings such as neighborhoods and/or distance from downtown to investigate whether or not they can uncover stronger relationships with the price of property.
+  For future work on this matter, we expect to explore the geographical attributes of the listings such as neighborhoods and/or distance from downtown to investigate whether or not they can uncover stronger relationships with the price of the property.
 
 ##References
   Scikit-learn.org. (2018). sklearn.tree.DecisionTreeClassifier — scikit-learn 0.20.1 documentation. [online] Available at: https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html [Accessed 24 Nov. 2018].  
