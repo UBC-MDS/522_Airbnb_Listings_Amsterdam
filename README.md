@@ -149,6 +149,7 @@ docker run --rm -e PASSWORD=test -v `pwd`:/home/rstudio/final_report <DOCKERHUB 
 - scikit-learn==0.19.1
 - matplotlib==2.2.2
 - graphviz==0.8.4
+- pickle==4.0
 
 ## Dependency Diagram of the Makefile 
  ![](results/out.png)
