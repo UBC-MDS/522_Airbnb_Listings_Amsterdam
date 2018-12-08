@@ -58,51 +58,63 @@ From the data, we can see that there are several features inside:
 
 ## Data cleaning
   
-  After taking a look of these features, we realized that `neighbourhood` and `location(latitude and longtitude)` could act similarly in affecting the room price, as well as `reviews_per_month` and `number_of_reviews`. `Latitude and longitude` pairs are a more complicated feature than `Neighbourhood`, since it contains two continuous variables that must be combined to carry any meaning. At the moment, we haven't learned how to combine two features into one and implement it in the decision tree. Therefore, at this time, we decide not to use these two features. For `reviews_per_month` and `number_of_reviews`, when we first looked at the data, we believed that `reviews_per_month` is a better feature to use than `number_of_reviews` because it is possible that some listings have more reviews simply due to the fact that they're on airbnb longer than others. However, when we took a deep look, we found out that there are more than 2000 missing values in the `reviews_per_month`, therefore, we decided to use `number_of_reviews` instead. At the end, we used `room_type`, `minimum_nights`, `number_of_reviews`,  `calculated_host_listings_count`, and `availability_365` for our analysis.
+  After taking a look of these features, we realized that `neighbourhood` and `location(latitude and longtitude)` could act similarly in affecting the room price, as well as `reviews_per_month` and `number_of_reviews`. `Latitude and longitude` pairs are a more complicated feature than `Neighbourhood`, since it contains two continuous variables that must be combined to carry any meaning. At the moment, we haven't learned how to combine two features into one and implement it in the decision tree. Therefore, at this time, we decide not to use these two features. 
+  
+  For `reviews_per_month` and `number_of_reviews`, when we first looked at the data, we believed that `reviews_per_month` is a better feature to use than `number_of_reviews` because it is possible that some listings have more reviews simply due to the fact that they're on airbnb longer than others. However, when we took a deep look, we found out that there are more than 2000 missing values in the `reviews_per_month`, therefore, we decided to use `number_of_reviews` instead. 
+  
+  At the end, we used `room_type`, `minimum_nights`, `number_of_reviews`,  `calculated_host_listings_count`, and `availability_365` for our analysis.
   
 ## Data Visualization
 
   In this section, we are going to explore if each feature affects the price by visualizing it. 
 
   The first one we are going to look at is the relationship between number of reviews of a listing and its price. 
-  
-![Figure 1: Price vs Number of Reviews](../results/exploratory-amsterdam_price-reviews.png)
-Figure 1: Relationship between the Number of Reviews per Listing and Price.
 
-  Based on our experience, AirBnb reviews are unbalanced toward positive appraisals. Negative reviews are actually not that common, maybe because after a few negative reviews, no one else will rent that place. Therefore, we would think that a higher number of reviews would make the listing more reliable, allowing the host to charge a higher price for that. However, lower priced places can had more guests in the past, so they may have higher reviews either. From the graph above, there is a negative trend between price and number of reviews. Therefore, it can be predictor of the price, but we are not sure if it will be a strong one.
+<img src="../results/exploratory-amsterdam_price-reviews.png" width="550"/>
+
+Figure 1: Relationship between the Number of Reviews per Listing and Price level.
+
+  Based on our experience, AirBnb reviews are unbalanced toward positive appraisals. Negative reviews are actually not that common, maybe because after a few negative reviews, no one else will rent that place. Therefore, we would think that a higher number of reviews would make the listing more reliable, allowing the host to charge a higher price for that. However, lower priced places can had more guests in the past, so they may have higher reviews either. From the graph above, we cannot see a strong correlation between price and number of reviews. HTherefore, it can be predictor of the price, but we are not sure if it will be one.
   
   The second one we are going to look at is the relationship between minimum nights the host requires for a listing and its price.
-  
-![Figure 2: Price vs Minimum number of nights](../results/exploratory-amsterdam_price-minNights.png)
-Figure 2: Relationship between Minimum number of nights host requires and price.
 
-  From this graph , listings of median price level are having more required minimum nights than others, which is weird because we cannot see a clear pattern on it. Therefore, from this graph, we cannot be sure whether the minimum number of nights is a predictor of the price. 
+<img src="../results/exploratory-amsterdam_price-minNights.png" width="550"/>  
+
+Figure 2: Relationship between Minimum number of nights host requires and price level.
+
+  From this graph , listings of median price level and high price level are having more required minimum nights as 3 than the low, and the listings of low price level have more minimum nights as 1, but other than that, it is hard to observe anything. Therefore, from this graph, we cannot be sure whether the minimum number of nights is a predictor of the price. 
 
   The third one we are going to look at is the relationship between the room type of a listing and its price. 
+  
+<img src="../results/exploratory-amsterdam_price-roomType.png" width="550"/>  
 
-![Figure 3: Price vs Room Type](../results/exploratory-amsterdam_price-roomType.png)
 Figure 3: Comparision of the maximum, minimum, 25% percentile, median, and 75% percentile of prices for different room types.
 
-  From this graph, we can see the counts of shared room are always high regardless of the price level. When we look at private room, there are more listings of high level price than other price. However, for the entire home/apt, low price level has most counts. From the graph, it is hard to see some corelation between the room type and the price.
+  From this graph, we can see that the avergage price of entire home/apt is higher than the other two. Therefore, it is possible that room type can be a predictor, or even a strong predictor of the price.
 
   
 
   The fourth one we are going to look at is the relationship between the number of listings that listing host has and the price of that listing.
-  
-![Figure 4: Price vs Number of listings per host](../results/exploratory-amsterdam_price-listingsCount.png)
+
+<img src="../results/exploratory-amsterdam_price-listingsCount.png" width="550"/> 
+
 Figure 4: Relationship between the number of listings the host has and the price
 
-  From the graph, we can see there is a weak and unproportional corelation, but there is no strong correlation between the number of listings and the price. Although there are more highly priced listings when the number of listings a host has is small, that could be because there are more listings that have the host having low number of listings. 
+  From the graph, we can barely see any correlation. Although there are more low priced listings when the number of listings a host has is 2, we are not sure about the correlation at all. 
 
   The last one we are going to look at is the relationship between the number of availability per 365 days of a listing and the its price.
 
-![Figure 5: Price vs Availability per 365 days](../results/exploratory-amsterdam_price-availability.png)
+<img src="../results/exploratory-amsterdam_price-availability.png" width="550"/> 
+
 Figure 5: Relationship between the number of availability per 365 days and the price
 
-  From the graph, we can see that there is a week positive correlation between the availability per 365 days and the price, however we are not sure if it is a strong predictor or not.
-  
-  
-  After the exploration, as a result, we found out usually there are always a weak or a weird corelation between the price and the feature, however from the graphs, `number of reviews` and `availability per 365` have the strongest corelation among these features. We expect `number of reviews` and `availability per 365` to be the strongest predictors of price. We are not sure about rest of the features.
+  From the graph, it is hard to observe anything or see any correlation, apart from low level priced listings have less counts when number of availability per 365 days is 100. We are not sure if it is a strong predictor or not.
+
+<img src="../results/exploratory-amsterdam_plot-grid.png" width="550"/>
+
+Figure 6: Summary of all graphs
+
+  After the exploration, as a result, we found out usually there are always a weak or a uninteraptable relationship between the price and the feature. It seems that `Room Type`could possibly be one of the two strongest predictors (although the graph shows that none of the features is really a "strong" predictor.) We are not sure about rest of the features at all.
   
 ##Decision Tree
 
@@ -110,21 +122,29 @@ Figure 5: Relationship between the number of availability per 365 days and the p
   
   We are going to label the price as three levels: `low`,`median`, and `high`, and set it as our response variable. To train the model, we are going to use 80% of the data as training data, and 20% of the data as testing data.
   
+  Below is a histogram of the price and the cutoffs of the price level.
+
+<img src="../results/exploratory-amsterdam_price-histogram.png" width="550"/>
+
+Firgure 7: Histogram of the price with two vertical lines as the cutoffs of the price level.
+  
+  
   First, in order to get the higher accuracy, we decide to test the accuracy on the hyperparameter `max_depth`. We choose to expriment the value of `max_depth` between 2 and 13 with our training data. After the experiment, we found out that when `max_depth` is 4, the test accuracy is the highest. Therefore, we decide to use `max_depth=4` in this model. 
   
   Next, we use the training data again for fitting the model that has the hyperparameter of `max_depth=4`. After fitting the model, we are going to use this model and our testing data to predict the outputs. This is the decision tree we get:
   
-![Figure 7: Decision Tree](../results/tree_graph.png)
-Figure 7: The decision tree we made for analyzing the strong predictors of the price
+![Figure 8: Decision Tree](../results/tree_graph.png)
+
+Figure 8: The decision tree we made for analyzing the strong predictors of the price
 
    After getting the decision tree and outputs from the model, we are going to alculate the accuracy of the outputs by comparing the outputs with the actual outputs we already had in the testing data. The accuracy we came out is *0.482*, which is not high. This could be because all features we analyzed are not really strong predictors of price, which is actually in accordance with the findings in our data visualization.
    
   Still, as the goal of our research, we are going to use this model to find out the most important factors affecting the price. After testing, we found out that `room_type` and `availability_365` are the two strongest predictors of the price. However, due to the low accuracy of this model, we are not very confident about the results. Since the accuracy of the model is low, it is possible that the results from the decision trees are just less reliable than our intuition and exploratory data analysis.
   
 ##Conclusion and Limitation
-  Overall, from the data visualzation, we expected `number of reviews` and `availability_365` to be the two strongest predictors. However, from the decision tree, we got `room_type` and `availability_365` as the "winners". Regardless, we are confident that `availability_365` is a strong predictor of the price, but we are less sure about the other two. 
+  Overall, from the data visualzation, we expected `room_type` to be one of the two strongest predictors, and we are not sure about the other one. However, from the decision tree, we got `room_type` and `availability_365` as the "winners". Regardless, we are confident that `room_type` is a strong predictor of the price, but we are less sure about the other two. 
 
-  We do know that our analysis has limitations. For example, we found out that `neighborhood` could be a strong predictor on pricing, however, due to the complexity of this categorical feature, we decided not to use it. Also, as mentioned before, we used `number of reviews` instead or `reviews per month`, which means that some listings could simply have more reviews because they are on Airbnb for a longer time. 
+  We do know this analysis has limitations. For example, we found out that `neighborhood` could be a strong predictor on pricing, however, due to the complexity of this categorical feature, we decided not to use it. Also, as mentioned before, we used `number of reviews` instead or `reviews per month`, which means that some listings could simply have more reviews because they are on Airbnb for a longer time. 
 
   For future work on this matter, we expect to explore the geographical attributes of the listings such as neighborhoods and/or distance to downtown to check whether or not they're the strongest predictor of the price of listings.
 
