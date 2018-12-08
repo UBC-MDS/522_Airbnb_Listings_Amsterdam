@@ -171,11 +171,19 @@ In order to find out the two strongest predictors of price, we are going to make
 
 We are going to label the price as three levels: `low`,`median`, and `high`, and set it as our response variable. To train the model, we are going to use 80% of the data as training data, and 20% of the data as testing data.
 
+Below is a histogram of the price and the cutoffs of the price level.
+
+<img src="../results/exploratory-amsterdam_price-histogram.png" width="550"/>
+
+Firgure 7: Histogram of the price with two vertical lines as the cutoffs of the price level.
+
 First, in order to get the higher accuracy, we decide to test the accuracy on the hyperparameter `max_depth`. We choose to expriment the value of `max_depth` between 2 and 13 with our training data. After the experiment, we found out that when `max_depth` is 4, the test accuracy is the highest. Therefore, we decide to use `max_depth=4` in this model.
 
 Next, we use the training data again for fitting the model that has the hyperparameter of `max_depth=4`. After fitting the model, we are going to use this model and our testing data to predict the outputs. This is the decision tree we get:
 
-![Figure 7: Decision Tree](../results/tree_graph.png) Figure 7: The decision tree we made for analyzing the strong predictors of the price
+![Figure 8: Decision Tree](../results/tree_graph.png)
+
+Figure 8: The decision tree we made for analyzing the strong predictors of the price
 
 After getting the decision tree and outputs from the model, we are going to alculate the accuracy of the outputs by comparing the outputs with the actual outputs we already had in the testing data. The accuracy we came out is *0.482*, which is not high. This could be because all features we analyzed are not really strong predictors of price, which is actually in accordance with the findings in our data visualization.
 
@@ -184,9 +192,9 @@ Still, as the goal of our research, we are going to use this model to find out t
 Conclusion and Limitation
 -------------------------
 
-Overall, from the data visualzation, we expected `number of reviews` and `availability_365` to be the two strongest predictors. However, from the decision tree, we got `room_type` and `availability_365` as the "winners". Regardless, we are confident that `availability_365` is a strong predictor of the price, but we are less sure about the other two.
+Overall, from the data visualzation, we expected `room_type` to be one of the two strongest predictors, and we are not sure about the other one. However, from the decision tree, we got `room_type` and `availability_365` as the "winners". Regardless, we are confident that `room_type` is a strong predictor of the price, but we are less sure about the other two.
 
-We do know that our analysis has limitations. For example, we found out that `neighborhood` could be a strong predictor on pricing, however, due to the complexity of this categorical feature, we decided not to use it. Also, as mentioned before, we used `number of reviews` instead or `reviews per month`, which means that some listings could simply have more reviews because they are on Airbnb for a longer time.
+We do know this analysis has limitations. For example, we found out that `neighborhood` could be a strong predictor on pricing, however, due to the complexity of this categorical feature, we decided not to use it. Also, as mentioned before, we used `number of reviews` instead or `reviews per month`, which means that some listings could simply have more reviews because they are on Airbnb for a longer time.
 
 For future work on this matter, we expect to explore the geographical attributes of the listings such as neighborhoods and/or distance to downtown to check whether or not they're the strongest predictor of the price of listings.
 

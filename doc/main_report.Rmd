@@ -122,12 +122,20 @@ Figure 6: Summary of all graphs
   
   We are going to label the price as three levels: `low`,`median`, and `high`, and set it as our response variable. To train the model, we are going to use 80% of the data as training data, and 20% of the data as testing data.
   
+  Below is a histogram of the price and the cutoffs of the price level.
+
+<img src="../results/exploratory-amsterdam_price-histogram.png" width="550"/>
+
+Firgure 7: Histogram of the price with two vertical lines as the cutoffs of the price level.
+  
+  
   First, in order to get the higher accuracy, we decide to test the accuracy on the hyperparameter `max_depth`. We choose to expriment the value of `max_depth` between 2 and 13 with our training data. After the experiment, we found out that when `max_depth` is 4, the test accuracy is the highest. Therefore, we decide to use `max_depth=4` in this model. 
   
   Next, we use the training data again for fitting the model that has the hyperparameter of `max_depth=4`. After fitting the model, we are going to use this model and our testing data to predict the outputs. This is the decision tree we get:
   
-![Figure 7: Decision Tree](../results/tree_graph.png)
-Figure 7: The decision tree we made for analyzing the strong predictors of the price
+![Figure 8: Decision Tree](../results/tree_graph.png)
+
+Figure 8: The decision tree we made for analyzing the strong predictors of the price
 
    After getting the decision tree and outputs from the model, we are going to alculate the accuracy of the outputs by comparing the outputs with the actual outputs we already had in the testing data. The accuracy we came out is *0.482*, which is not high. This could be because all features we analyzed are not really strong predictors of price, which is actually in accordance with the findings in our data visualization.
    
