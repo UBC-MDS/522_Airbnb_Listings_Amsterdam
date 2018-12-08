@@ -107,7 +107,9 @@ Report: [doc/main_report.md](doc/main_report.md)
 
 1. Clone this repository
 
-2. Run the following commands:
+2. Install dependency packages
+
+3. Run the following commands:
 
 
 #### Removes all unnecessary files and start the project from scratch:
@@ -122,18 +124,18 @@ make all
 ### Run with Docker
 
 - Install [Docker](https://www.docker.com/get-started)
-- Download and clone this repository
-- Use the command line to navigate to the root of this repo
+- Clone this repository
+- Use the command line to navigate to the root of this project
 - type the following(`pwd` is the absolute path in your computer. If it doesn't work, please type it manually):
 
 ```
-docker run --rm -e PASSWORD=test -v `pwd`:/home/rstudio/final_report <DOCKERHUB REPO NAME, eg: ads0713132/522_airbnb_listings_amsterdam> make -C '/home/rstudio/final_report' all
+docker run --rm -e PASSWORD=test -v `pwd`:/home/rstudio/final_report ads0713132/522_airbnb_listings_amsterdam make -C '/home/rstudio/final_report' all
 ```
 
 5. To clean up the analysis type:, use the following:
 
 ```
-docker run --rm -e PASSWORD=test -v `pwd`:/home/rstudio/final_report <DOCKERHUB REPO NAME, eg: ads0713132/522_airbnb_listings_amsterdam> make -C '/home/rstudio/final_report' clean
+docker run --rm -e PASSWORD=test -v `pwd`:/home/rstudio/final_report ads0713132/522_airbnb_listings_amsterdam make -C '/home/rstudio/final_report' clean
 ```
 
 
@@ -151,5 +153,5 @@ docker run --rm -e PASSWORD=test -v `pwd`:/home/rstudio/final_report <DOCKERHUB 
 - graphviz==0.8.4
 - pickle==4.0
 
-## Dependency Diagram of the Makefile 
+## Dependency Diagram of the Makefile
  ![](results/out.png)
